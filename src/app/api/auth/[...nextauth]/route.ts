@@ -14,11 +14,14 @@ const handler = NextAuth({
             email: { label: "Email", type: "email", placeholder: "jsmith"},
             password: { label: "Password", type: "password", placeholder: "********" }
           },
+          /* eslint-disable-next-line @typescript-eslint/ban-ts-comment*/
+          // @ts-ignore
           async authorize(credentials, req) {
-            //const user = { id : "1", name: "j smith", email: "john@gmail.com"};
-            ///console.log(credentials)
+            
+
+            
             const result = await db.select().from(users)
-                .where(eq(users.email, credentials?.email))
+                 .where(eq(users.email, credentials?.email))
                 .get();
             ///console.log(result)
             if (!result) throw new Error("Invalid")
