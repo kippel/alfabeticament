@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 type Inputs = {
-    username: string,
+    name: string,
     email: string,
     password: string,
     confirmPassword: string
@@ -33,11 +33,11 @@ function RegisterPage() {
                 <h1 className="text-slate-200 font-black text-4xl mb-4">
                     Register
                 </h1>
-                <label htmlFor="username" className="text-slate-400 mb-2 block text-lg">
+                <label htmlFor="name" className="text-slate-400 mb-2 block text-lg">
                     Username
                 </label>
                 <input type="text"
-                    {...register("username", {
+                    {...register("name", {
                         required: {
                             value: true,
                             message: 'Username is required'
@@ -45,8 +45,8 @@ function RegisterPage() {
                     })}
                     className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full" />
                 {
-                    errors.username && (
-                        <span className="text-red-300">{errors.username.message}</span>
+                    errors.name && (
+                        <span className="text-red-300">{errors.name.message}</span>
                     )
                 }
                 <label htmlFor="email" className="text-slate-400 mb-2 block text-lg">
@@ -83,7 +83,7 @@ function RegisterPage() {
                 <label htmlFor="confirmPassword" className="text-slate-400 mb-2 block text-lg">
                     Confirm Password
                 </label>
-                <input type="confirmPassword" {...register("confirmPassword", {
+                <input type="password" {...register("confirmPassword", {
                     required: {
                             value: true,
                             message: 'Confirm Password is required'

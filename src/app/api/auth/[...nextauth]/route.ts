@@ -11,7 +11,7 @@ const handler = NextAuth({
       CredentialsProvider({
           name: 'credentials',
           credentials: {
-            email: { label: "Email", type: "email", placeholder: "jsmith"},
+            name: { label: "Name", type: "text", placeholder: "jsmith"},
             password: { label: "Password", type: "password", placeholder: "********" }
           },
           /* eslint-disable-next-line @typescript-eslint/ban-ts-comment*/
@@ -20,8 +20,9 @@ const handler = NextAuth({
             
 
             
+            if (!credentials?.name) throw new Error("Name is required");
             const result = await db.select().from(users)
-                 .where(eq(users.email, credentials?.email))
+                 .where(eq(users.name, credentials.name))
                 .get();
             ///console.log(result)
             if (!result) throw new Error("Invalid")

@@ -5,12 +5,10 @@ import bcrypt from "bcryptjs"
 import { eq } from 'drizzle-orm';
 
 export async function POST(request : Request){
-    const {username, email, password, confirmPassword} = await request.json()
-    // todo
-    //console.log(username)
-    //const reds = await db.select().from(users).where(eq(users.name, username));
+    const {name, email, password, confirmPassword} = await request.json()
+   
     const reds = db.select().from(users)
-          .where(eq(users.name, username))
+          .where(eq(users.name, name))
           .get();
 
     
@@ -20,10 +18,19 @@ export async function POST(request : Request){
             message: "name"
         });
     }
+
+    /// todo
+    if (password !== confirmPassword){
+        return NextResponse.json({
+            message: "password"
+        });
+    }
+
+
     const hashedPassword = await bcrypt.hash(password, 12)
 
     const data = {
-        name: username,
+        name: name,
         email: email,
         password: hashedPassword
     }

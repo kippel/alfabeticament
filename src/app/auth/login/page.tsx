@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 type Inputs = {
-    email: string,
+    name: string,
     password: string,
 
 }
@@ -19,14 +19,14 @@ function LoginPage() {
     const onSubmit = handleSubmit(async (data) => {
         //console.log(data)
         const res = await signIn("credentials",{
-            email: data.email,
+            name: data.name,
             password: data.password,
             redirect: false
         })
 
         if (res?.error) return setError(res.error as string)
 
-        if (res?.ok) return router.push("/dashboard")
+        if (res?.ok) return router.push("/abc")
         
     })
 
@@ -40,20 +40,20 @@ function LoginPage() {
                 </h1>
                 { error && <div className="bg-red-500 text-white p-2 mb-2">{error}</div>}
                 
-                <label htmlFor="email" className="text-slate-400 mb-2 block text-lg">
-                    Email
+                <label htmlFor="name" className="text-slate-400 mb-2 block text-lg">
+                    Name
                 </label>
-                <input type="email"
-                    {...register("email", {
+                <input type="text"
+                    {...register("name", {
                         required: {
                             value: true,
-                            message: 'Email is required'
+                            message: 'Namel is required'
                         }
                     })}
                     className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full" />
                  {
-                    errors.email && (
-                        <span className="text-red-300">{errors.email.message}</span>
+                    errors.name && (
+                        <span className="text-red-300">{errors.name.message}</span>
                     )
                 }
                 
