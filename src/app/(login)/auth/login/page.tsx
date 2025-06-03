@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form"
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
+
 
 type Inputs = {
     name: string,
@@ -34,6 +36,9 @@ function LoginPage() {
 
     return (
         <div className="h-[calc(100vh-7rem)] flex justify-center items-center">
+            <div className="absolute top-5 right-5">
+                <Link href="/auth/register" className="text-blue-500">Register</Link>
+            </div>
             <form onSubmit={onSubmit} className="w-1/4">
                 <h1 className="text-slate-200 font-black text-4xl mb-4">
                     Register

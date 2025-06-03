@@ -1,8 +1,9 @@
 "use client"
 import { useForm } from "react-hook-form"
 import axios from "axios";
-import { useState } from "react";
+
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 type Inputs = {
     name: string,
@@ -29,6 +30,9 @@ function RegisterPage() {
 
     return (
         <div className="h-[calc(100vh-7rem)] flex justify-center items-center">
+            <div className="absolute top-5 right-5">
+                <Link href="/auth/login" className="text-blue-500">Login</Link>
+            </div>
             <form onSubmit={onSubmit} className="w-1/4">
                 <h1 className="text-slate-200 font-black text-4xl mb-4">
                     Register
