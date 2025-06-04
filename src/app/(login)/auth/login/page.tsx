@@ -55,7 +55,7 @@ function LoginPage() {
                             message: 'Namel is required'
                         }
                     })}
-                    className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full" />
+                    className="p-3 rounded block mb-2 bg-slate-800 text-slate-300 w-full" />
                  {
                     errors.name && (
                         <span className="text-red-300">{errors.name.message}</span>
@@ -70,7 +70,7 @@ function LoginPage() {
                             value: true,
                             message: 'Password is required'
                         }
-                })} className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full" />
+                })} className="p-3 rounded block mb-2 bg-slate-800 text-slate-300 w-full" />
                 {
                     errors.password && (
                         <span className="text-red-300">{errors.password.message}</span>
