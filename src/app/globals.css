@@ -10,6 +10,13 @@ body {
 }
 
 
+html,
+body,
+:root {
+  @apply h-full;
+}  
+
+
 @theme inline {
 
     --radius-sm: calc(var(--radius) - 4px);

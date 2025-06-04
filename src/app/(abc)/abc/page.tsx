@@ -7,7 +7,7 @@ function AbcPage(){
     console.log(session, status)
     console.log("www")
     return (
-        <div>AbcPage</div>
+        <>AbcPage</>
     )
 }
 

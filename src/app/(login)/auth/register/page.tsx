@@ -98,6 +98,7 @@ function RegisterPage() {
                         <span className="text-red-300">{errors.confirmPassword.message}</span>
                     )
                 }
+                
                 <button className="w-full bg-blue-500 text-white p-3 rounded-lg mt-2 ">Register</button>
             </form>
         </div>
