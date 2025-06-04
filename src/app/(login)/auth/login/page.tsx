@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
-
+import { Button } from '@/components/ui/button'
 
 type Inputs = {
     name: string,
@@ -76,8 +76,8 @@ function LoginPage() {
                         <span className="text-red-300">{errors.password.message}</span>
                     )
                 }
+                <Button variant="primary" className="w-full mt-2 rounded-lg">Register</Button>
                 
-                <button className="w-full bg-blue-500 text-white p-3 rounded-lg mt-2 ">Register</button>
             </form>
         </div>
     )
