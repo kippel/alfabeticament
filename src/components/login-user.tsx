@@ -20,7 +20,7 @@ export const LoginUser = () => {
         <DropdownMenu>
             <DropdownMenuTrigger className="focus:outline-none focus:ring-[2px] focus:ring-offset-2 focus:ring-primary rounded-full">
                 <Avatar>
-                    <AvatarFallback>AB</AvatarFallback>
+                    <AvatarFallback className="bg-primary text-primary-foreground">AB</AvatarFallback>
                 </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent>

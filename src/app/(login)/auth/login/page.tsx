@@ -32,8 +32,7 @@ function LoginPage() {
         
     })
 
-    console.log(errors)
-
+    
     return (
         <div className="h-[calc(100vh-7rem)] flex justify-center items-center">
             <div className="absolute top-5 right-5">
@@ -41,7 +40,7 @@ function LoginPage() {
             </div>
             <form onSubmit={onSubmit} className="w-1/4">
                 <h1 className="text-slate-200 font-black text-4xl mb-4">
-                    Register
+                    Login
                 </h1>
                 { error && <div className="bg-red-500 text-white p-2 mb-2">{error}</div>}
                 
