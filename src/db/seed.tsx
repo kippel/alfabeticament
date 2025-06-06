@@ -5,10 +5,10 @@ import { eq } from 'drizzle-orm';
 import bcrypt from "bcryptjs"
 
 async function main() {
-    const hashedPassword = await bcrypt.hash("password", 12)
+    const hashedPassword = await bcrypt.hash("qwerty", 12)
     
         const data = {
-            name: "kippel_bar",
+            name: "kippel_",
             email: "emai@l.com",
             password: hashedPassword
         }
