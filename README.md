@@ -28,3 +28,4 @@ $ npx auth secret
 ```
 
 
+https://orm.drizzle.team/docs/get-started/bun-sqlite-new

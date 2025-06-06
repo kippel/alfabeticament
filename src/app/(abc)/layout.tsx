@@ -8,15 +8,15 @@ type Props = {
 
 const LessonLayout = ({ children }: Props) => {
   return <>
-  <MobileHeader />
-  <Sidebar className="hidden lg:flex" />
+    <MobileHeader />
+    <Sidebar className="hidden lg:flex" />
 
-  <main className="lg:pl-[256px] h-full pt-[50px] lg:pt-0">
-    <div className="bg-red-300 h-full">
-{children}
+    <main className="lg:pl-[256px] h-full pt-[50px] lg:pt-0">
+      <div className="bg-red-300 h-full">
+        {children}
 
-    </div>
-  </main>
+      </div>
+    </main>
   </>;
 };
 

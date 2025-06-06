@@ -7,10 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "drizzle:generate": "drizzle-kit generate:sqlite",
+    "drizzle:generate": "drizzle-kit generate:sqlite --config drizzle.config.ts",
     "drizzle:migrate": "drizzle-kit migrate",
+    "drizzle:studio": "drizzle-kit studio",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "seed": "tsx src/db/seed.tsx"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.10",
