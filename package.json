@@ -35,7 +35,8 @@
     "react-hook-form": "^7.57.0",
     "react-icons": "^5.5.0",
     "tailwind-merge": "^3.3.0",
-    "ts-jest": "^29.3.4"
+    "ts-jest": "^29.3.4",
+    "zod": "^3.26.0-canary.20250606T065527"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -58,5 +59,12 @@
     "tsx": "^4.19.4",
     "tw-animate-css": "^1.3.3",
     "typescript": "^5"
+  },
+  "compilerOptions": {
+    
+    "strict": true
+  },
+  "aslintConfig": {
+	  "extends" : "standard"
   }
 }
