@@ -29,3 +29,11 @@ $ npx auth secret
 
 
 https://orm.drizzle.team/docs/get-started/bun-sqlite-new
+
+process.env.DB_FILE_NAME!
+
+
+```
+$ npx drizzle-kit generate
+$ npx drizzle-kit push
+```

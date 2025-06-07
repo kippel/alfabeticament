@@ -8,8 +8,9 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut, Settings, User } from "lucide-react";
+import { LogOut, Settings, User, Languages } from "lucide-react";
 import { signOut } from "next-auth/react"
+import Link from "next/link";
 
 
 export const LoginUser = () => {
@@ -29,6 +30,12 @@ export const LoginUser = () => {
                 <DropdownMenuItem>
                     <User className="h-4 w-4" /> Profile
                 </DropdownMenuItem>
+                <DropdownMenuItem>
+                    <Languages className="h-4 w-4" /> 
+                    <Link href="/abc/languages">Idiomas</Link>
+                    
+                </DropdownMenuItem>
+
                 <DropdownMenuItem>
                     <Settings className="h-4 w-4" /> Settings
                 </DropdownMenuItem>
