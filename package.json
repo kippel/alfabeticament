@@ -30,7 +30,9 @@
     "next": "15.3.3",
     "next-auth": "^4.24.11",
     "next-themes": "^0.4.6",
+    "pg": "^8.16.0",
     "react": "^19.0.0",
+    "react-circular-progressbar": "^2.2.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.57.0",
     "react-icons": "^5.5.0",
@@ -49,7 +51,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "drizzle-kit": "^0.31.1",
+    "drizzle-kit": "^0.18.1",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
     "jest": "^29.7.0",
@@ -61,10 +63,9 @@
     "typescript": "^5"
   },
   "compilerOptions": {
-    
     "strict": true
   },
   "aslintConfig": {
-	  "extends" : "standard"
+    "extends": "standard"
   }
 }
