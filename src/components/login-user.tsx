@@ -10,12 +10,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { LogOut, Settings, User, Languages } from "lucide-react";
 import { signOut } from "next-auth/react"
-import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 
 export const LoginUser = () => {
 
-    
+    const router = useRouter()
 
     return (
         <DropdownMenu>
@@ -32,8 +31,8 @@ export const LoginUser = () => {
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                     <Languages className="h-4 w-4" /> 
-                    <Link href="/abc/languages">Idiomas</Link>
                     
+                    <button onClick={() => router.push('/abc/languages')}>Idiomas</button>
                 </DropdownMenuItem>
 
                 <DropdownMenuItem>
