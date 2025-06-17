@@ -1,6 +1,7 @@
 //import { serial } from "drizzle-orm/mysql-core";
 //import { pgTable } from "drizzle-orm/pg-core";
 import { sqliteTable, integer, text } from "drizzle-orm/sqlite-core";
+import { relations } from "drizzle-orm";
 
 export const users = sqliteTable("users", {
   id: integer("id").primaryKey({ autoIncrement: true }),
@@ -16,15 +17,48 @@ export const courses = sqliteTable("courses", {
   imageSrc: text("image_src").notNull()
 })
 
+export const coursesRelations = relations(courses, ({many}) => ({
+  userProgress: many(userProgress),
+}));
+
+
+export const userProgress = sqliteTable("user_progress", {
+  userId: integer("id").primaryKey({ autoIncrement: true }),
+  activeCourseId: integer("active_course_id") //.references(() => courses.id, { onDelete: "cascade"})
+})
+
+export const userProgressRelations = relations(userProgress, ({ one}) => 
+({
+  activeCourse: one(courses, {
+    fields: [userProgress.activeCourseId],
+    references: [courses.id],
+  }),
+}));
+
+
+export const abcBar = sqliteTable("abc_bar", {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    title: text("title").notNull(),
+    name: text("name").notNull(),
+    coursesId: integer("courses_id")
+});
+
+
+export const abcBarRelations = relations(abcBar, ({ one}) => 
+({
+  activeCourse: one(courses, {
+    fields: [abcBar.coursesId],
+    references: [courses.id],
+  }),
+}));
+
+export const abcList = sqliteTable("abc_list", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  abcId: integer("abc_id"),
+  coursesId: integer("courses_id"),
+  title: text("title").notNull()
+});
 
 
 
 
-/*
-lletra = Column(String)
-    numbro = Column(Integer)
-    voice = Column(String)
-    vocals = Column(String)
-
-
-*/
