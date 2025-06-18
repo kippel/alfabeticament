@@ -1,5 +1,5 @@
 import { db } from '@/db/db'
-import { abcBar, abcList } from '@/db/schema'
+import { abcBar, abcList, abcUn } from '@/db/schema'
 import { eq, and } from 'drizzle-orm';
 
 
@@ -22,4 +22,13 @@ export const getAbcList = async ({id}: { id : number}) => {
     //console.log(abc_list)
 
     return abc_list;
+};
+
+
+export const getLessonId = async ({id}: { id : number}) => {
+
+    const abc_un = await db.select().from(abcUn)
+                .where(eq(abcUn.abcUnId, id));
+    
+    return abc_un;
 };

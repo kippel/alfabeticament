@@ -60,5 +60,22 @@ export const abcList = sqliteTable("abc_list", {
 });
 
 
+export const abcUn = sqliteTable("abc_un", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  abcUnId: integer("abc_un_id"),
+  nom: text("nom"),
+  number: integer("number"),
+  number_bar: integer("number_bar")
+});
+
+export const abcDos = sqliteTable("abc_dos", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  abcDosId: integer("abc_dos_id"),
+  number: integer("number"),
+  number_bar: integer("number_bar"),
+  lletres: text("lletres"),
+  voice: text("voice"),
+  vocals: text("vocals")
+});
 
 

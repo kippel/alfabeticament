@@ -1,6 +1,6 @@
 // drizzle/seed.ts
 import { db } from './db'; // tu instancia de Drizzle
-import { users, courses, userProgress, abcBar, abcList } from './schema'; // tu esquema
+import { users, courses, userProgress, abcBar, abcList, abcUn, abcDos } from './schema'; // tu esquema
 //import { eq } from 'drizzle-orm';
 import bcrypt from "bcryptjs"
 
@@ -41,6 +41,9 @@ async function main() {
   await db.delete(userProgress);
   await db.delete(abcBar);
   await db.delete(abcList);
+
+  await db.delete(abcUn)
+  await db.delete(abcDos)
 
   const user_id = await users_bar()
   const courses_id = await courses_bar()
@@ -83,6 +86,45 @@ async function main() {
             title: "Monosíl.labs 2"
         },
     ]);
+
+    await db.insert(abcUn).values([
+      {
+          id: 1,
+          abcUnId: 1,
+          nom: "dos",
+          number: 1,
+          number_bar: 1
+      },
+      {
+          id: 2,
+          abcUnId: 1,
+          nom: "dos",
+          number: 2,
+          number_bar: 1
+      },
+      {
+          id: 3,
+          abcUnId: 1,
+          nom: "dos",
+          number: 3,
+          number_bar: 1
+      }
+
+    ]);
+
+     await db.insert(abcDos).values([
+        {
+          id: 1,
+          abcDosId: 1,
+          lletres: "pa",
+          voice_mp3: "/mp3/hello.mp3",
+          vocals_images: "/images/bread.png",
+          number: 1,
+          number_bar: 1
+        }
+     ]);
+
+
 
 
 }

@@ -3,6 +3,8 @@
 db/drizzle/*
 db/sqlite.db
 
+public/mp3/*
+
 # dependencies
 /node_modules
 /.pnp
