@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react'
-
+import { AbcDosBar } from './abc-dos-bar';
+import axios from "axios";
 
 type AbcUnType = {
     id: number;
@@ -21,18 +22,16 @@ export const AbcLesson = ({id} : Props) => {
     const [coute, setCoute] = useState<number>(0);
     const [index, setIndex] = useState(true);
 
-    //const data = await axios.get(`/api/abcs/${id}`)
-    //console.log(data)
-
-
-
+    
     useEffect(() => {
         async function fetchPosts() {
-            const res = await fetch(`/api/abcs/${id}`)
-            const data = await res.json()
-            console.log(data.abc)
+            console.log(`/api/abcs/${id}`)
+            const res = await axios.get(`/api/abcs/${id}`)
+            //const res = await fetch(`/api/abcs/${id}`)
+            //const data = await res.json()
+            //console.log(data.abc)
             setIndex(false)
-            setPosts(data.abc)
+            setPosts(res.data.abc)
             setCoute(0)
         }
 
@@ -41,5 +40,12 @@ export const AbcLesson = ({id} : Props) => {
 
     if (index) return <div>Loading...</div>
 
-    return <>{posts[coute].nom}</>
+    return <>{}
+        <AbcDosBar
+           id={posts[coute].abcUnId} 
+           number={posts[coute].number} 
+           number_bar={posts[coute].number_bar} 
+        />
+    
+    </>
 }

@@ -74,8 +74,8 @@ export const abcDos = sqliteTable("abc_dos", {
   number: integer("number"),
   number_bar: integer("number_bar"),
   lletres: text("lletres"),
-  voice: text("voice"),
-  vocals: text("vocals")
+  voice_mp3: text("voice"),
+  vocals_images: text("vocals")
 });
 
 
