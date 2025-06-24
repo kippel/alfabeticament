@@ -3,6 +3,8 @@ import Link from "next/link";
 import { LoginUser } from "./login-user";
 import { SidebarItem } from "./sidebar-item";
 import { Brain } from 'lucide-react';
+import { ModeToggle } from "@/components/ui/mode-toggle";
+
 
 type Props = {
     className?: string;
@@ -10,7 +12,7 @@ type Props = {
 
 export const Sidebar = ({ className}: Props) => {
     return (
-        <div className={cn("flex h-full text-blue-700 bg-amber-50 lg:w-[256px] lg:fixed left-0 top-0 px-4 border-r-2 flex-col", className)}>
+        <div className={cn("flex h-full lg:w-[256px] lg:fixed left-0 top-0 px-4 border-r-2 flex-col", className)}>
             <Link href="/abc">
             <div className="pt-8 pl-4 pb-7 flex items-center gap-x-3">
 
@@ -27,6 +29,7 @@ export const Sidebar = ({ className}: Props) => {
                  </SidebarItem>                
             </div>
             <div className="p-20">
+                <ModeToggle />
                 <LoginUser />
             </div>
         </div>

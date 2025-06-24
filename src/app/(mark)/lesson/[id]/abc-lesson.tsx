@@ -16,8 +16,8 @@ type Props = {
 
 
 export const AbcLesson = ({id} : Props) => {
-    console.log(id)
-    const [posts, setPosts] = useState<AbcUnType>([]);
+    
+    const [posts, setPosts] = useState<AbcUnType[]>([]);
     const [coute, setCoute] = useState<number>(0);
     const [index, setIndex] = useState(true);
 
