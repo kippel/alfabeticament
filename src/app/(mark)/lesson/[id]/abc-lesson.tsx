@@ -40,7 +40,7 @@ export const AbcLesson = ({id} : Props) => {
 
     if (index) return <div>Loading...</div>
 
-    return <>{}
+    return <>
         <AbcDosBar
            id={posts[coute].abcUnId} 
            number={posts[coute].number} 

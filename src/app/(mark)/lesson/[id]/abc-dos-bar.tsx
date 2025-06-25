@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from "axios";
 import Image from 'next/image'
+import { Sounds } from '@/components/sounds/sound';
 
 type Props = {
     id: number;
@@ -62,19 +63,39 @@ export const AbcDosBar = ({
     
     if (indexId) return "<div>fff</div>"
 
-    return <>{dos?.lletres}
-    {dos?.voice_mp3}
-    { dos?.vocals_images && (
-    <Image
-      src={dos?.vocals_images || null}
-      width={500}
-      height={500}
-      alt="Picture of the author"
-    />
-    )}
+    return (
+    <div className="content py-2 px-10">
+
+            { dos?.vocals_images && (
+                <Image
+                src={dos?.vocals_images || null}
+                width={500}
+                height={500}
+                alt="Picture of the author"
+                className="w-48 h-48 float-left"
+                />
+            )}
+
+
+            
+            <div className="item-body ">
+                <Sounds voice={dos?.voice_mp3} />
+              {dos?.lletres}
+            </div>
+          </div>
+    
+    );
+    
+    
+    
 
     
-    </>
+
+    
+    
+
+    
+    
 
     
 };
