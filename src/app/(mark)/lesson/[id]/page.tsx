@@ -17,10 +17,10 @@ export default async function LessonIdPage({ params }: PageProps){
     
     //console.log(id)
     return (
-        <div>lesson
+        
         
         <AbcLesson id={id} />
-        </div>
+    
     )
 }
 

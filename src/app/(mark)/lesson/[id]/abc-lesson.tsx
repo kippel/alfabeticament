@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react'
 import { AbcDosBar } from './abc-dos-bar';
 import axios from "axios";
+import { Header } from '@/components/lessons/header';
+import { Footer } from '@/components/lessons/footer';
 
 type AbcUnType = {
     id: number;
@@ -41,13 +43,29 @@ export const AbcLesson = ({id} : Props) => {
     if (index) return <div>Loading...</div>
 
     return <>
-        <AbcDosBar
+        
+        <Header />
+        <div className="flex-1">
+            <div className="h-full flex items-center justify-center">
+                <div className="lg:min-h-[350px] lg:w-[600px] w-full px-6 lg:px-0 flex flex-col gap-y-12">
+<AbcDosBar
            id={posts[coute].abcUnId} 
            number={posts[coute].number} 
            number_bar={posts[coute].number_bar} 
            indexId={indexId}
            setIndexId={setIndexId}
         />
-    
+        
+       
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <Footer />
+        
     </>
 }

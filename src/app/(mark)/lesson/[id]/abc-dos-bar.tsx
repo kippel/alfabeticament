@@ -64,7 +64,7 @@ export const AbcDosBar = ({
     if (indexId) return "<div>fff</div>"
 
     return (
-    <div className="content py-2 px-10">
+    <div className="lg:pt-[50px] pt-[20px] px-10 flex gap-x-7 items-center justify-between max-w-[1140px] mx-auto w-full">
 
             { dos?.vocals_images && (
                 <Image
