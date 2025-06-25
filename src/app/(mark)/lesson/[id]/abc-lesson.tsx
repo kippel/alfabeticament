@@ -21,7 +21,7 @@ export const AbcLesson = ({id} : Props) => {
     const [posts, setPosts] = useState<AbcUnType[]>([]);
     const [coute, setCoute] = useState<number>(0);
     const [index, setIndex] = useState(true);
-
+    const [indexId, setIndexId] = useState(true);
     
     useEffect(() => {
         async function fetchPosts() {
@@ -45,6 +45,8 @@ export const AbcLesson = ({id} : Props) => {
            id={posts[coute].abcUnId} 
            number={posts[coute].number} 
            number_bar={posts[coute].number_bar} 
+           indexId={indexId}
+           setIndexId={setIndexId}
         />
     
     </>

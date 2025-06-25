@@ -16,13 +16,22 @@ type DosType = {
     lletres: string;
     voice_mp3: string;
     vocals_images: string;
+    indexId: boolean;
+    setIndexId: boolean;
 }
 
 
 
-export const AbcDosBar = ({id, number, number_bar} : Props) => {
+export const AbcDosBar = ({
+    id, 
+    number, 
+    number_bar,
+    indexId,
+    setIndexId
+} : Props) => {
 
     const [dos, setDos] = useState<DosType | null>();
+    
 
     useEffect(() => {
         async function fetchPosts() {
@@ -33,7 +42,7 @@ export const AbcDosBar = ({id, number, number_bar} : Props) => {
                     number: number,
                     number_bar: number_bar
                 })
-                
+                setIndexId(false)
                 setDos(res.data.dos[0])
 
                 /*
@@ -51,17 +60,18 @@ export const AbcDosBar = ({id, number, number_bar} : Props) => {
         fetchPosts()
     }, []);
     
-
+    if (indexId) return "<div>fff</div>"
 
     return <>{dos?.lletres}
     {dos?.voice_mp3}
-
+    { dos?.vocals_images && (
     <Image
-      src={dos?.vocals_images}
+      src={dos?.vocals_images || null}
       width={500}
       height={500}
       alt="Picture of the author"
     />
+    )}
 
     
     </>
