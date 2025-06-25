@@ -7,6 +7,8 @@ type Props = {
     id: number;
     number: number;
     number_bar: number;
+    indexId: boolean;
+    setIndexId: (value: boolean) => void;
 }
 
 type DosType = {
@@ -18,7 +20,7 @@ type DosType = {
     voice_mp3: string;
     vocals_images: string;
     indexId: boolean;
-    setIndexId: boolean;
+    
 }
 
 
@@ -45,21 +47,11 @@ export const AbcDosBar = ({
                 })
                 setIndexId(false)
                 setDos(res.data.dos[0])
-
-                /*
-                const res = await fetch("/api/abcs/idDos",
-
-                )
-                const data = await res.json()
-                console.log(data.abc)
-                setIndex(false)
-                setPosts(data.abc)
-                setCoute(0)
-                */
+                
         }
     
         fetchPosts()
-    }, []);
+    }, [id, number, number_bar, setIndexId]);
     
     if (indexId) return "<div>fff</div>"
 

@@ -121,6 +121,15 @@ async function main() {
           vocals_images: "/images/bread.png",
           number: 1,
           number_bar: 1
+        },
+        {
+          id: 2,
+          abcDosId: 1,
+          lletres: "pa dadasdasd",
+          voice_mp3: "/mp3/hello.mp3",
+          vocals_images: "/images/bread.png",
+          number: 2,
+          number_bar: 1
         }
      ]);
 
