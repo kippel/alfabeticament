@@ -138,7 +138,7 @@ async function main() {
           id: 1,
           abcDosId: 1,
           lletres: "pa",
-          voice_mp3: "/mp3/hello.mp3",
+          voice_mp3: "/mp3/ca/pa.mp3",
           vocals_images: "/images/bread.svg",
           number: 1,
           number_bar: 1
@@ -147,7 +147,7 @@ async function main() {
           id: 2,
           abcDosId: 1,
           lletres: "sol",
-          voice_mp3: "/mp3/hello.mp3",
+          voice_mp3: "/mp3/ca/sol.mp3",
           vocals_images: "/images/sun.svg",
           number: 2,
           number_bar: 1
@@ -156,7 +156,7 @@ async function main() {
           id: 3,
           abcDosId: 1,
           lletres: "ou",
-          voice_mp3: "/mp3/hello.mp3",
+          voice_mp3: "/mp3/ca/ou.mp3",
           vocals_images: "/images/egg.svg",
           number: 3,
           number_bar: 1
@@ -165,7 +165,7 @@ async function main() {
           id: 4,
           abcDosId: 1,
           lletres: "col",
-          voice_mp3: "/mp3/hello.mp3",
+          voice_mp3: "/mp3/ca/col.mp3",
           vocals_images: "/images/cabbage.svg",
           number: 4,
           number_bar: 1
@@ -174,7 +174,7 @@ async function main() {
           id: 5,
           abcDosId: 1,
           lletres: "ull",
-          voice_mp3: "/mp3/hello.mp3",
+          voice_mp3: "/mp3/ca/ull.mp3",
           vocals_images: "/images/eye.svg",
           number: 5,
           number_bar: 1
@@ -183,7 +183,7 @@ async function main() {
           id: 6,
           abcDosId: 1,
           lletres: "dau",
-          voice_mp3: "/mp3/hello.mp3",
+          voice_mp3: "/mp3/ca/dau.mp3",
           vocals_images: "/images/dice.svg",
           number: 6,
           number_bar: 1
