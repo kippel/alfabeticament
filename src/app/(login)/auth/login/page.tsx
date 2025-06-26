@@ -82,7 +82,7 @@ function LoginPage() {
                                 <span className="text-red-300">{errors.password.message}</span>
                             )
                         }
-                        <Button variant="primary" className="w-full mt-2 rounded-lg">Register</Button>
+                        <Button variant="primary" className="w-full mt-2 rounded-lg">Login</Button>
 
                     </form>
 
