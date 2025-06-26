@@ -35,9 +35,7 @@ export const AbcLesson = ({ id }: Props) => {
         async function fetchPosts() {
             console.log(`/api/abcs/${id}`)
             const res = await axios.get(`/api/abcs/${id}`)
-            //const res = await fetch(`/api/abcs/${id}`)
-            //const data = await res.json()
-            //console.log(data.abc)
+
             setIndex(false)
             setPosts(res.data.abc)
             setCoute(0)
@@ -53,11 +51,9 @@ export const AbcLesson = ({ id }: Props) => {
         if (coute + 1 < posts.length){
             setCoute(coute + 1);
         } else{
-            router.push('/lesson/1');
+            router.push('/abc/abc');
         }
         
-        //console.log(coute)
-        //router.push('/lesson/1')
     };
 
     const currentPost = posts[coute];

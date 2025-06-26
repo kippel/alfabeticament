@@ -108,6 +108,27 @@ async function main() {
           nom: "dos",
           number: 3,
           number_bar: 1
+      },
+      {
+          id: 4,
+          abcUnId: 1,
+          nom: "dos",
+          number: 4,
+          number_bar: 1
+      },
+      {
+          id: 5,
+          abcUnId: 1,
+          nom: "dos",
+          number: 5,
+          number_bar: 1
+      },
+      {
+          id: 6,
+          abcUnId: 1,
+          nom: "dos",
+          number: 6,
+          number_bar: 1
       }
 
     ]);
@@ -118,17 +139,53 @@ async function main() {
           abcDosId: 1,
           lletres: "pa",
           voice_mp3: "/mp3/hello.mp3",
-          vocals_images: "/images/bread.png",
+          vocals_images: "/images/bread.svg",
           number: 1,
           number_bar: 1
         },
         {
           id: 2,
           abcDosId: 1,
-          lletres: "pa dadasdasd",
+          lletres: "sol",
           voice_mp3: "/mp3/hello.mp3",
-          vocals_images: "/images/bread.png",
+          vocals_images: "/images/sun.svg",
           number: 2,
+          number_bar: 1
+        },
+        {
+          id: 3,
+          abcDosId: 1,
+          lletres: "ou",
+          voice_mp3: "/mp3/hello.mp3",
+          vocals_images: "/images/egg.svg",
+          number: 3,
+          number_bar: 1
+        },
+        {
+          id: 4,
+          abcDosId: 1,
+          lletres: "col",
+          voice_mp3: "/mp3/hello.mp3",
+          vocals_images: "/images/cabbage.svg",
+          number: 4,
+          number_bar: 1
+        },
+        {
+          id: 5,
+          abcDosId: 1,
+          lletres: "ull",
+          voice_mp3: "/mp3/hello.mp3",
+          vocals_images: "/images/eye.svg",
+          number: 5,
+          number_bar: 1
+        },
+        {
+          id: 6,
+          abcDosId: 1,
+          lletres: "dau",
+          voice_mp3: "/mp3/hello.mp3",
+          vocals_images: "/images/dice.svg",
+          number: 6,
           number_bar: 1
         }
      ]);

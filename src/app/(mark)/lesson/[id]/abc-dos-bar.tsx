@@ -33,7 +33,7 @@ export const AbcDosBar = ({
     setIndexId
 } : Props) => {
 
-    const [dos, setDos] = useState<DosType | null>();
+    const [dos, setDos] = useState<DosType | null>(null);
     
 
     useEffect(() => {
@@ -55,12 +55,14 @@ export const AbcDosBar = ({
     
     if (indexId) return "<div>fff</div>"
 
+    const vocals_images = dos?.vocals_images || null
+    
     return (
     <div className="lg:pt-[50px] pt-[20px] px-10 flex gap-x-7 items-center justify-between max-w-[1140px] mx-auto w-full">
 
             { dos?.vocals_images && (
                 <Image
-                src={dos?.vocals_images || null}
+                src={vocals_images}
                 width={500}
                 height={500}
                 alt="Picture of the author"
