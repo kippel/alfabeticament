@@ -13,7 +13,7 @@ type Props = {
 export const Sidebar = ({ className}: Props) => {
     return (
         <div className={cn("flex h-full lg:w-[256px] lg:fixed left-0 top-0 px-4 border-r-2 flex-col", className)}>
-            <Link href="/abc">
+            <Link href="/dash">
             <div className="pt-8 pl-4 pb-7 flex items-center gap-x-3">
 
                 <h1 className="text-2xl font-extrabold text-green-500 tracking-wide">
