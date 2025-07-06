@@ -1,7 +1,12 @@
+import Link from 'next/link';
 
 function DashPage() {
     return (
-        <div>dash</div>
+        <div>dash
+
+
+            <Link href="/lesson">Lesson</Link>
+        </div>
     )
 };
 

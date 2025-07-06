@@ -20,3 +20,17 @@ model User {
   name  String  @unique
   password String
 }
+
+model Abecedari_abc {
+  id        Int      @default(autoincrement()) @id
+  lletres   String
+  abecedariId Int
+}
+
+model Abecedari_abc_lletres {
+  id          Int      @default(autoincrement()) @id
+  lletres     String
+  lletres_blue String
+  voice_mp3   String
+  abecedariId Int
+}
