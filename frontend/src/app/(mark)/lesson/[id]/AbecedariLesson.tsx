@@ -2,6 +2,7 @@
 import { Header } from '@/components/lessons/header';
 import { DivBar } from '@/components/div/div-lesson';
 import { useEffect, useState } from 'react';
+import { AbcLesson } from './abc-lesson';
 import axios from 'axios';
 
 type AbcLLetresType = {
@@ -42,7 +43,9 @@ export const AbecedariLesson = ({ id }: Props) => {
         <Header />
         <DivBar>
             {currentPost && (
-            <p>{currentPost.lletres}</p>
+               <AbcLesson  
+            <p>{currentPost.lletres.toLowerCase()}
+            {currentPost.lletres.toUpperCase()}</p>
 
             )}
         </DivBar>
