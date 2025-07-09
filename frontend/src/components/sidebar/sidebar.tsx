@@ -26,7 +26,11 @@ export const Sidebar = ({ className}: Props) => {
                  <SidebarItem label="Abc" href="/abc/abc">
                    <Brain size={32}/>
 
-                 </SidebarItem>                
+                 </SidebarItem>  
+                 <SidebarItem label="Abc" href="/dash/abecedaris">
+                   <Brain size={32}/>
+
+                 </SidebarItem>               
             </div>
             <div className="p-20">
                 <ModeToggle />

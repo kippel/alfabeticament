@@ -1,9 +1,12 @@
 "use client";
 import { Header } from '@/components/lessons/header';
+import { Footer } from '@/components/lessons/footer';
 import { DivBar } from '@/components/div/div-lesson';
 import { useEffect, useState } from 'react';
 import { AbcLesson } from './abc-lesson';
 import axios from 'axios';
+
+import { useRouter } from "next/navigation";
 
 type AbcLLetresType = {
     id: number;
@@ -23,11 +26,12 @@ export const AbecedariLesson = ({ id }: Props) => {
     const [coute, setCoute] = useState<number>(0);
     const [index, setIndex] = useState<boolean>(true);
 
+    const router = useRouter();
+
     useEffect(() => {
         async function fetchPosts() {
-            console.log(`/api/abc/abecedarilletres/${id}`)
             const res = await axios.get(`http://localhost:4000/api/abc/abecedarilletres/${id}`)
-            console.log(res)
+
             setIndex(false)
             setPosts(res.data.abecedari)
             setCoute(0)
@@ -35,6 +39,16 @@ export const AbecedariLesson = ({ id }: Props) => {
 
         fetchPosts()
     }, [id]);
+
+    const handleCheck = () => {
+        console.log('Button clicked: check performed');
+        if (coute + 1 < posts.length){
+            setCoute(coute + 1);
+        } else{
+            router.push('/dash/abecedaris');
+        }
+        
+    };
 
     const currentPost = posts[coute];
 
@@ -44,11 +58,17 @@ export const AbecedariLesson = ({ id }: Props) => {
         <DivBar>
             {currentPost && (
                <AbcLesson  
-            <p>{currentPost.lletres.toLowerCase()}
-            {currentPost.lletres.toUpperCase()}</p>
+                    id={currentPost.id} 
+                    lletresLower={currentPost.lletres.toUpperCase()}
+                    lletresUpper={currentPost.lletres.toLowerCase() } 
+                    lletres_blue={currentPost.lletres_blue} 
+                    voice_mp3={currentPost.voice_mp3}
+                     
+                />
 
             )}
         </DivBar>
+        <Footer onCheck={handleCheck} />
         </>
     )
 }
