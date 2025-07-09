@@ -16,10 +16,12 @@ function AbecedarisPage(){
     const [abc, setAbc] = useState<AbecedarisProps[]>([]);
     const [index, setIndex] = useState<boolean>(true);
 
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
     useEffect(() => {
         async function fetchPosts() {
             //console.log(`/api/abcs/)
-            const res = await axios.get(`http://localhost:4000/api/abc/abecedari`)
+            const res = await axios.get(`${backendUrl}/api/abc/abecedari`)
             console.log(res.data.abecedari);
             setIndex(false);
             setAbc(res.data.abecedari);
