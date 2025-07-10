@@ -29,14 +29,11 @@ export const AbecedariLesson = ({ id }: Props) => {
     const router = useRouter();
 
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-    console.log(backendUrl)
+
 
     useEffect(() => {
         async function fetchPosts() {
 
-            //NEXT_PUBLIC_BACKEND_URL=http://192.168.50.148:4000
-            
-            //const res = await axios.get(`http://localhost:4000/api/abc/abecedarilletres/${id}`)
             const res = await axios.get(`${backendUrl}/api/abc/abecedarilletres/${id}`)
             setIndex(false)
             setPosts(res.data.abecedari)
