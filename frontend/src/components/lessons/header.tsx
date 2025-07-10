@@ -13,7 +13,7 @@ export const Header = ({ percentage} : Props) => {
             <X onClick={() => {}}
             className="text-slate-500 hover:opacity-75 transition cursor-pointer" />
             <Progress value={percentage} />
-            
+       
             
             
             </header>
