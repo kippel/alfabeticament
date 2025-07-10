@@ -26,6 +26,8 @@ export const AbecedariLesson = ({ id }: Props) => {
     const [coute, setCoute] = useState<number>(0);
     const [index, setIndex] = useState<boolean>(true);
 
+    const [percentage, setPercentage] = useState(0)
+
     const router = useRouter();
 
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
@@ -41,10 +43,10 @@ export const AbecedariLesson = ({ id }: Props) => {
         }
 
         fetchPosts()
-    }, [id]);
+    }, [backendUrl, id]);
 
     const handleCheck = () => {
-        console.log('Button clicked: check performed');
+        
         if (coute + 1 < posts.length){
             setCoute(coute + 1);
         } else{
@@ -55,13 +57,23 @@ export const AbecedariLesson = ({ id }: Props) => {
 
     const currentPost = posts[coute];
 
+    // Calculate percentage based on current progress
+    useEffect(() => {
+        if (posts.length > 0) {
+            const progressPercentage = Math.round(((coute + 1) / posts.length) * 100);
+            setPercentage(progressPercentage);
+        }
+    }, [coute, posts.length]);
+
+
+
     return (
         <>
-        <Header />
+        <Header percentage={percentage} />
         <DivBar>
             {currentPost && (
                <AbcLesson  
-                    id={currentPost.id} 
+                    id={currentPost.id.toString()} 
                     lletresLower={currentPost.lletres.toUpperCase()}
                     lletresUpper={currentPost.lletres.toLowerCase() } 
                     lletres_blue={currentPost.lletres_blue} 
