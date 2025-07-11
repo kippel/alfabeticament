@@ -2,7 +2,6 @@
 import { Sounds } from '@/components/lletres/sound';
 
 type Props ={
-    id: string;
     lletresLower: string; 
     lletresUpper: string; 
     lletres_blue: string; 
@@ -11,7 +10,7 @@ type Props ={
 
 
 export const AbcLesson = ({
-    id, 
+     
     lletresLower, 
     lletresUpper, 
     lletres_blue, 

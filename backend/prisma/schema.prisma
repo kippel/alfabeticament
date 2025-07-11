@@ -34,3 +34,10 @@ model Abecedari_abc_lletres {
   voice_mp3   String
   abecedariId Int
 }
+
+
+model Abeced_abc_lletres {
+  id          Int      @default(autoincrement()) @id
+  voice_mp3   String
+  abecedariId Int
+}

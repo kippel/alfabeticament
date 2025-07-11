@@ -21,5 +21,14 @@ export class AbcController {
         return { abecedari : abecedari_lletres }
     }
 
+    @Get('abecedlletres/:id')
+    async abecedLletres(@Param("id") id :number){
+        // todo
+        const abecedari_lletres = await this.abcService.abecedariLletresBy(id)
+
+        const abeced_lletres = await this.abcService.abecedLletresBy(id)
+        return { abecedari : abecedari_lletres,   abeced:  abeced_lletres  }
+    }
+
 
 }

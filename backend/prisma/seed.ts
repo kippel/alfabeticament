@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
-import { abecedaris, abecedarin } from './codes/abecedaris';
+import { abecedaris, abecedarin, abecedn } from './codes/abecedaris';
 import { users } from './codes/users';
 const prisma = new PrismaClient();
 
@@ -47,7 +47,14 @@ async function main() {
         data: abecedari_i
     });
   }
-
+               
+  await prisma.abeced_abc_lletres.deleteMany();
+  
+  for (let abeced_i of abecedn) {
+    await prisma.abeced_abc_lletres.create({
+        data: abeced_i
+    });
+  }
   //console.log('User created or already exists:', user);
 }
 

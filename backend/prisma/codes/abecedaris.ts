@@ -3,22 +3,22 @@
 export const abecedaris = [
     {
          id: 1,
-         lletres: "Abc a-i",
+         lletres: "Abecedari A-I",
          abecedariId: 1
     },
     {
          id: 2,
-         lletres: "Abc j-r",
+         lletres: "Abecedari J-R",
          abecedariId: 2
     },
     {
          id: 3,
-         lletres: "Abc s-z",
+         lletres: "Abecedari S-Z",
          abecedariId: 3
     },
     {
          id: 4,
-         lletres: "Abc a-z",
+         lletres: "Abecedari A-Z",
          abecedariId: 4
     }
 
@@ -389,4 +389,30 @@ export const abecedarin = [
           voice_mp3: "/mp3/zeta.mp3",
           abecedariId: 4
        }
+];
+// a be ce de e efe ge hac i
+// jota ca ela ema ena o pe cu erra
+// essa te u ve ve doble ics i grege zeta
+// a be ce de e efe ge hac i jota ca ela ema ena o pe cu erra essa te u ve ve doble ics i grege zeta
+export const abecedn = [
+   { 
+      id: 1,
+      voice_mp3: "/mp3/abeced_a_i.mp3",
+      abecedariId: 1
+   },
+   { 
+      id: 2,
+      voice_mp3: "/mp3/abeced_j_r.mp3",
+      abecedariId: 2
+   },
+   { 
+      id: 3,
+      voice_mp3: "/mp3/abeced_s_z.mp3",
+      abecedariId: 3
+   },
+    { 
+      id: 4,
+      voice_mp3: "/mp3/abeced_a_z.mp3",
+      abecedariId: 4
+   }
 ];

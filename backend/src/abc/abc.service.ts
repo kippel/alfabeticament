@@ -19,4 +19,12 @@ export class AbcService {
         });
         
     }
+
+    async abecedLletresBy(id: number){
+        return await this.prisma.abeced_abc_lletres.findMany({
+            where: {
+                abecedariId: id,
+            },
+        });
+    }
 }

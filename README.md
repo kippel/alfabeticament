@@ -16,7 +16,13 @@
 
 
 ```
-$ npx prisma studio
+npx prisma studio
 ```
 
 
+```
+frontend $ npm run dev
+backend $ npm run start:dev
+```
+
+npx prisma migrate dev --name init

@@ -9,7 +9,6 @@ import axios from 'axios';
 import { useRouter } from "next/navigation";
 
 type AbcLLetresType = {
-    id: number;
     lletres: string;
     lletres_blue: string;
     voice_mp3: string;
@@ -45,6 +44,8 @@ export const AbecedariLesson = ({ id }: Props) => {
         fetchPosts()
     }, [backendUrl, id]);
 
+    
+
     const handleCheck = () => {
         
         if (coute + 1 < posts.length){
@@ -66,14 +67,15 @@ export const AbecedariLesson = ({ id }: Props) => {
     }, [coute, posts.length]);
 
 
+    if (index) return <div>Loading...</div>
+
 
     return (
         <>
         <Header percentage={percentage} />
         <DivBar>
             {currentPost && (
-               <AbcLesson  
-                    id={currentPost.id.toString()} 
+               <AbcLesson   
                     lletresLower={currentPost.lletres.toUpperCase()}
                     lletresUpper={currentPost.lletres.toLowerCase() } 
                     lletres_blue={currentPost.lletres_blue} 
