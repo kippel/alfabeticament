@@ -10,12 +10,6 @@ type AbecedarisProps = {
   abecedariId: string;
 };
 
-const paths = [
-  (id: string) => `/lesson/${id}`,
-  (id: string) => `/dash/abeced/1/${id}`,
-  (id: string) => `/dash/abeced/2/${id}`,
-];
-
 function AbecedarisPage() {
   const [abc, setAbc] = useState<AbecedarisProps[]>([]);
   const [index, setIndex] = useState<boolean>(true);
@@ -36,17 +30,22 @@ function AbecedarisPage() {
 
   if (index) return <div>Loading...</div>;
 
-  return (
-    <DivLesson text="Abecedari">
+  const renderList = (title: string, pathPrefix: string) => (
+    <>
+      <p>{title}</p>
       {abc.map((item) => (
         <div key={item.id}>
-          {paths.map((pathFn, index) => (
-            <div key={index}>
-              <Link href={pathFn(item.abecedariId)}>{item.lletres}</Link>
-            </div>
-          ))}
+          <Link href={`${pathPrefix}/${item.abecedariId}`}>{item.lletres}</Link>
         </div>
       ))}
+    </>
+  );
+
+  return (
+    <DivLesson text="Abecedari">
+      {renderList("Abc", "/lesson")}
+      {renderList("Abc a b c", "/dash/abeced/1")}
+      {renderList("Abc a be ce", "/dash/abeced/2")}
     </DivLesson>
   );
 }
