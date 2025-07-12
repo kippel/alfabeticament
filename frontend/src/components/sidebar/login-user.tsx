@@ -26,18 +26,25 @@ export const LoginUser = () => {
             <DropdownMenuContent>
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
+                { /*
                 <DropdownMenuItem>
                     <User className="h-4 w-4" /> Profile
                 </DropdownMenuItem>
+                */ }
+
+                { /*
                 <DropdownMenuItem>
                     <Languages className="h-4 w-4" /> 
                     
                     <button onClick={() => router.push('/abc/languages')}>Idiomas</button>
                 </DropdownMenuItem>
+                */ }
 
+                { /*
                 <DropdownMenuItem>
                     <Settings className="h-4 w-4" /> Settings
                 </DropdownMenuItem>
+                */ }
                 <DropdownMenuItem className="text-destructive">
                     <LogOut className="h-4 w-4" /> <button onClick={() => signOut({ callbackUrl: '/' })}>Logout</button>
                 </DropdownMenuItem>

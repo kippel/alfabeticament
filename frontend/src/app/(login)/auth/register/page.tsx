@@ -10,7 +10,6 @@ import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
 
 type Inputs = {
     name: string,
-    email: string,
     password: string,
     confirmPassword: string
 }
@@ -18,10 +17,12 @@ type Inputs = {
 function RegisterPage() {
     const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
     const router = useRouter();
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
     //const [message, setMessage] =
     const onSubmit = handleSubmit(async (data) => {
         //console.log(data)
-        const resh = await axios.post('/api/auth/register', data);
+        const resh = await axios.post(`${backendUrl}/api/auth/register`, data);
         //console.log(resh)
         //console.log('red')
         if (resh?.statusText) return router.push("/auth/login")
@@ -59,22 +60,6 @@ function RegisterPage() {
                         {
                             errors.name && (
                                 <span className="text-red-300">{errors.name.message}</span>
-                            )
-                        }
-                        <label htmlFor="email" className="text-slate-400 mb-2 block text-lg">
-                            Email
-                        </label>
-                        <input type="email"
-                            {...register("email", {
-                                required: {
-                                    value: true,
-                                    message: 'Email is required'
-                                }
-                            })}
-                            className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full" />
-                        {
-                            errors.email && (
-                                <span className="text-red-300">{errors.email.message}</span>
                             )
                         }
 

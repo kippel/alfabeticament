@@ -14,15 +14,21 @@ export class AuthService {
     ) {}
 
     async login(dto: LoginDto){
+       
         const user = await this.validateUser(dto);
+        console.log("fffff")
+        // todo
+
+
 
         const payload = {
             username: user.name,
             sub: {
                 name: user.name,
+                //password: user.password,
             },
         };
-
+        console.log(user)
         return {
             user,
             backendTokens: {
@@ -43,7 +49,7 @@ export class AuthService {
 
     async validateUser(dto: LoginDto) {
         const user = await this.userService.findByName(dto.username);
-
+        console.log(user)
         if (user && (await compare(dto.password, user.password))){
             const { password, ...result} = user;
             return result;

@@ -12,14 +12,17 @@ export class AuthController {
         private userService: UserService,
         private authService: AuthService, 
     ) {}
-
+           
     @Post('register')
     async registerUser(@Body() dto: CreateUserDto){
+        
         return await this.userService.create(dto);
     }
 
+    
     @Post('login')
     async login(@Body() dto: LoginDto) {
+       
         return await this.authService.login(dto)
     }
 
