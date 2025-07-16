@@ -22,7 +22,7 @@ function RegisterPage() {
     //const [message, setMessage] =
     const onSubmit = handleSubmit(async (data) => {
         //console.log(data)
-        const resh = await axios.post(`${backendUrl}/api/auth/register`, data);
+        const resh = await axios.post(`/api/auth/register`, data);
         //console.log(resh)
         //console.log('red')
         if (resh?.statusText) return router.push("/auth/login")
