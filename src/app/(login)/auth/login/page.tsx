@@ -12,7 +12,7 @@ import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card';
 
 
 type Inputs = {
-    username: string,
+    name: string,
     password: string,
 
 }
@@ -25,7 +25,7 @@ function LoginPage() {
     const onSubmit = handleSubmit(async (data) => {
         //console.log(data)
         const res = await signIn("credentials", {
-            username: data.username,
+            name: data.name,
             password: data.password,
             redirect: false
         })
@@ -51,11 +51,11 @@ function LoginPage() {
                         </h1>
                         {error && <div className="bg-red-500 text-white p-2 mb-2">{error}</div>}
 
-                        <label htmlFor="username" className="text-slate-400 mb-2 block text-lg">
-                            username
+                        <label htmlFor="name" className="text-slate-400 mb-2 block text-lg">
+                            Username
                         </label>
                         <input type="text"
-                            {...register("username", {
+                            {...register("name", {
                                 required: {
                                     value: true,
                                     message: 'Namel is required'
@@ -63,8 +63,8 @@ function LoginPage() {
                             })}
                             className="p-3 rounded block mb-2 bg-slate-800 text-slate-300 w-full" />
                         {
-                            errors.username && (
-                                <span className="text-red-300">{errors.username.message}</span>
+                            errors.name && (
+                                <span className="text-red-300">{errors.name.message}</span>
                             )
                         }
 
