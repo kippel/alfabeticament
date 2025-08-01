@@ -25,5 +25,5 @@ def root(db: db_dependency):
     
     return {"user": user}
 
-app.include_router(auth.router, prefix="/auth", tags=["auth"] )
-app.include_router(workouts.router, prefix="/workouts", tags=["workouts"])
+app.include_router(auth.router)
+app.include_router(workouts.router)

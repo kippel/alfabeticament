@@ -14,7 +14,7 @@ from api.models import User
 
 load_dotenv()
 
-router = APIRouter() # prefix="/auth", tags=["auth"])
+router = APIRouter( prefix="/auth", tags=["auth"])
 
 SECRET_KEY = os.getenv("AUTH_SECRET_KEY")
 ALGORITHM = os.getenv("AUTH_ALGORITHM")
@@ -71,7 +71,7 @@ async def create_user( db: db_dependency, create_user_request: UserCreateRequest
 
     return {"message": create_user_request}
 
-'''
+
 @router.post("/token", response_model=Token)
 async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
                                  db: db_dependency):
@@ -93,8 +93,8 @@ async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm,
     )
     
     return {"access_token": token, "token_type": "bearer"}
-'''
 
+'''
 @router.post("/login")
 async def login_token(users: UserRequest, db: db_dependency):
 
@@ -120,5 +120,5 @@ async def login_token(users: UserRequest, db: db_dependency):
     }
 
     return {"access_token": token, "token_type": "bearer", "user" : user_id}
-
+'''
     
