@@ -1,0 +1,10 @@
+
+
+backend/.venv/*
+
+backend/api/__pycache__/*
+backend/api/routers/__pycache__/*
+
+backend/sql_app.db
+
+.env
