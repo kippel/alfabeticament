@@ -1,0 +1,6 @@
+[
+    { "id": 1, "title": "Catala", "imageSrc": "/flag/Catala.svg", "courses": "ca"
+    },
+    { "id": 2, "title": "Español", "imageSrc": "/flag/Espanol.svg", "courses": "es"
+    }
+]

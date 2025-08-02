@@ -9,3 +9,5 @@ fastapi dev main.py --port 4000
 
 uv run fastapi dev api/main.py --port 4000
 
+
+PYTHONPATH=. uv run api/seed/seed.dev.py
