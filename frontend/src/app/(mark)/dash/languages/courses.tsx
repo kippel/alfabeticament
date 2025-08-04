@@ -28,25 +28,20 @@ const Courses = () => {
   const { data: session } = useSession();
   
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-  //console.log(session?);
-  //const uuid = 1; 
-  //const uuid = Number(session?.user?.id);
-  //console.log(uuid)
-
-  //const { data: session, status } = useSession();
+  
   useEffect(() => {
 
     //if (!session?.user?.id) return;
 
     async function fetchPosts() {
-      console.log(`/api/abcs/`)
+      
       
       const res = await axios.get(`${backendUrl}/courses`,   {
           headers: {
               Authorization: `Bearer ${session?.accessToken}`, 
           },
       });
-      console.log(res.data.languages);
+      
       setIndex(false);
       setLanguages(res.data.languages);
       setUserCourses(res.data.user_courses);
@@ -54,13 +49,13 @@ const Courses = () => {
     }
 
     fetchPosts();
-  }, [backendUrl]);
+  }, [backendUrl, session]);
 
   const onClick = (courses: string) => {
   
     async function red() {
 
-      console.log(courses);
+      
         const res = await axios.post(`${backendUrl}/courses`, {coursesId: courses},  {
           headers: {
               Authorization: `Bearer ${session?.accessToken}`, 
@@ -68,8 +63,8 @@ const Courses = () => {
         });
 
 
-        //const res = await axios.post(`${backendUrl}/courses`, {coursesId: courses});
-        console.log(res.data.user_courses)
+        
+        
         setUserCourses(res.data.user_courses); 
     }
     red();

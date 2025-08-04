@@ -56,7 +56,9 @@ def create_user_courses_id(user: user_dependency, db: db_dependency):
     
     return cour
 
-
+'''
+    GET /courses
+'''
 @router.get("/")
 async def courses(user: user_dependency, db: db_dependency):
 
@@ -76,7 +78,10 @@ async def courses(user: user_dependency, db: db_dependency):
 class CoursesRequest(BaseModel):
     coursesId: str
 
-
+'''
+    POST /courses
+    coursesId
+'''
 @router.post("/")
 async def courses_post(payload: CoursesRequest, user: user_dependency, db: db_dependency):
 
