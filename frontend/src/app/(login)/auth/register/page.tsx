@@ -1,6 +1,7 @@
 "use client"
 import { useForm } from "react-hook-form"
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import { useState } from "react";
 
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -9,7 +10,7 @@ import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
 
 
 type Inputs = {
-    name: string,
+    username: string,
     password: string,
     confirmPassword: string
 }
@@ -17,20 +18,30 @@ type Inputs = {
 function RegisterPage() {
     const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
     const router = useRouter();
+    const [error, setError] = useState("");
+    
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-    //const [message, setMessage] =
     const onSubmit = handleSubmit(async (data) => {
-        //console.log(data)
-        const resh = await axios.post(`${backendUrl}/api/auth/register`, data);
-        //console.log(resh)
-        //console.log('red')
-        if (resh?.statusText) return router.push("/auth/login")
-
-
+                
+        if (data.password !== data.confirmPassword) {
+            setError("Les contrasenyes no coincideixen");
+            return;
+        }
+        
+        try {
+            const resh = await axios.post(`${backendUrl}/auth/register`, data);
+        
+            if (resh.status === 200) {
+                return router.push("/auth/login");
+            }
+        } catch (err) {
+            const axiosErr = err as AxiosError<{ detail?: string }>;
+            const errorMessage = axiosErr.response?.data?.detail || "Error inesperat durant el registre.";
+            
+            return setError(errorMessage)
+        }
     })
-
-
 
     return (
         <div className="flex min-h-screen items-center justify-center">
@@ -46,11 +57,12 @@ function RegisterPage() {
                         <h1 className="text-slate-200 font-black text-4xl mb-4">
                             Register
                         </h1>
+                        {error && <div className="bg-red-500 text-white p-2 mb-2">{error}</div>}
                         <label htmlFor="name" className="text-slate-400 mb-2 block text-lg">
                             Username
                         </label>
                         <input type="text"
-                            {...register("name", {
+                            {...register("username", {
                                 required: {
                                     value: true,
                                     message: 'Username is required'
@@ -58,8 +70,8 @@ function RegisterPage() {
                             })}
                             className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full" />
                         {
-                            errors.name && (
-                                <span className="text-red-300">{errors.name.message}</span>
+                            errors.username && (
+                                <span className="text-red-300">{errors.username.message}</span>
                             )
                         }
 
