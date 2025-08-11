@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import ButtonLogin from "../button-login"
 import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
-
+import { toast } from "react-hot-toast";
 
 type Inputs = {
     username: string,
@@ -19,26 +19,33 @@ function RegisterPage() {
     const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
     const router = useRouter();
     const [error, setError] = useState("");
-    
+
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
     const onSubmit = handleSubmit(async (data) => {
-                
+
         if (data.password !== data.confirmPassword) {
-            setError("Les contrasenyes no coincideixen");
+            //setError("Les contrasenyes no coincideixen");
+
+            toast('Les contrasenyes no coincideixen', {
+                duration: 10000,
+                position: 'top-center',                
+                icon: '👏',
+            });
+
             return;
         }
-        
+
         try {
             const resh = await axios.post(`${backendUrl}/auth/register`, data);
-        
+
             if (resh.status === 200) {
                 return router.push("/auth/login");
             }
         } catch (err) {
             const axiosErr = err as AxiosError<{ detail?: string }>;
             const errorMessage = axiosErr.response?.data?.detail || "Error inesperat durant el registre.";
-            
+
             return setError(errorMessage)
         }
     })
@@ -108,7 +115,6 @@ function RegisterPage() {
                     </form>
                 </CardContent>
             </Card>
-
         </div>
     )
 }

@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import Providers from "@/components/Providers";
 
+import { AppToaster } from "@/components/AppToaster";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -35,10 +37,13 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+          
          <Providers>     
         {children}
         </Providers>
-        </ThemeProvider>
+        <AppToaster />
+        </ThemeProvider> 
+        
       </body>
     </html>
   );
