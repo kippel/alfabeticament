@@ -31,3 +31,55 @@ class UserCourses(Base):
     courses = Column(String, unique=True)
     user_id = Column(Integer(), ForeignKey('users.id')) 
 
+
+class AbcedarisAbc(Base):
+    __tablename__ = "abcedaris_abc"
+    id = Column(Integer, primary_key=True, index=True)
+    lletres = Column(String)
+    courses = Column(String)
+    abecedaris_id = Column(Integer)
+
+class AbecedarisAbcLletres(Base):
+    __tablename__ = "abcedaris_abc_lletres"
+    id = Column(Integer, primary_key=True, index=True)
+
+    lletres = Column(String)
+    lletres_blue = Column(String)
+    voice_mp3 = Column(String) 
+    abecedaris_id = Column(Integer) 
+
+''' 
+class AbecedAbcLletres(Base):
+    __tablename__ = "abced_abc_lletres"
+    id = Column(Integer, primary_key=True, index=True)
+
+    voice_mp3 =  Column(String, unique=True) 
+    abecedaris_id = Column(Integer, unique=True)
+    courses = Column(String, unique=True)
+'''
+
+''' 
+model Abecedari_abc {
+  id        Int      @default(autoincrement()) @id
+  lletres   String
+  abecedariId Int
+  courses String
+}
+
+model Abecedari_abc_lletres {
+  id          Int      @default(autoincrement()) @id
+  lletres     String
+  lletres_blue String
+  voice_mp3   String
+  abecedariId Int
+  courses String
+}
+
+
+model Abeced_abc_lletres {
+  id          Int      @default(autoincrement()) @id
+  voice_mp3   String
+  abecedariId Int
+  courses String
+}
+'''

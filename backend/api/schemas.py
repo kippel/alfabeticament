@@ -16,3 +16,11 @@ class UserCreateRegister(BaseModel):
     username: str
     password: str
     confirmPassword: str
+
+
+## courses
+
+class CoursesRequest(BaseModel):
+    coursesId: str
+
+## abc

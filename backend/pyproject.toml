@@ -12,3 +12,7 @@ dependencies = [
     "python-jose>=3.5.0",
     "sqlalchemy>=2.0.42",
 ]
+
+
+[tool.fastapi-cli.commands]
+seed = "api.cli:app"

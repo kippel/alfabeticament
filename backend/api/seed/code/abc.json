@@ -1,0 +1,44 @@
+{ "abcedaris_abc" :[
+    {
+         "id": 1,
+         "lletres": "Abecedari A-I",
+         "abecedaris_id": 1,
+         "courses": "ca"
+    },
+    {
+         "id": 2,
+         "lletres": "Abecedari J-R",
+         "abecedaris_id": 2,
+         "courses": "ca"
+    },
+    {
+         "id": 3,
+         "lletres": "Abecedari S-Z",
+         "abecedaris_id": 3,
+         "courses": "ca"
+    },
+    {
+         "id": 4,
+         "lletres": "Abecedari A-Z",
+         "abecedaris_id": 4,
+         "courses": "ca"
+    }
+
+],
+"abcedaris_abc_lletres" : [
+    {
+        "id": 1,
+        "lletres": "a",
+        "lletres_blue": "a",
+        "voice_mp3": "/mp3/ca/a.mp3",
+        "abecedaris_id": 1
+    },
+    {
+        "id": 2,
+        "lletres": "b",
+        "lletres_blue": "be",
+        "voice_mp3": "/mp3/ca/be.mp3",
+        "abecedaris_id": 1  
+       }
+]}
+

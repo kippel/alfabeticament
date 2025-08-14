@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import auth, workouts, courses
+from .routers import auth, workouts, courses, abc
 
 from .database import Base, engine
 
@@ -28,3 +28,4 @@ def root(db: db_dependency):
 app.include_router(auth.router)
 app.include_router(workouts.router)
 app.include_router(courses.router)
+app.include_router(abc.router)

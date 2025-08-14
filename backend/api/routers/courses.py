@@ -6,7 +6,8 @@ from api.deps import (
     user_dependency
     
 )
-from pydantic import BaseModel
+from api.schemas import CoursesRequest
+
 
 router = APIRouter(prefix="/courses", tags=["courses"])
 
@@ -75,8 +76,7 @@ async def courses(user: user_dependency, db: db_dependency):
     return {"languages": courses_all, "user_courses": data}
 
 
-class CoursesRequest(BaseModel):
-    coursesId: str
+
 
 '''
     POST /courses
@@ -99,3 +99,5 @@ async def courses_post(payload: CoursesRequest, user: user_dependency, db: db_de
     }
     
     return {"user_courses": data}
+
+
