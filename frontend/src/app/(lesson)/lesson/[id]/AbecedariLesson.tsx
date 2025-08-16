@@ -94,7 +94,6 @@ export const AbecedariLesson = ({ id }: Props) => {
                     lletresUpper={currentPost.lletres.toLowerCase() } 
                     lletres_blue={currentPost.lletres_blue} 
                     voice_mp3={currentPost.voice_mp3}
-                     
                 />
 
             )}

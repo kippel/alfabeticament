@@ -35,7 +35,7 @@ function AbecedarisPage() {
           },
       });
       
-      console.log(res.data.abecedari);
+      
       setIndex(false);
       setAbc(res.data.abecedari);
     }
@@ -59,8 +59,7 @@ function AbecedarisPage() {
   return (
     <DivLesson text="Abecedari">
       {renderList("Abc", "/lesson")}
-      {renderList("Abc a b c", "/dash/abeced/1")}
-      {renderList("Abc a be ce", "/dash/abeced/2")}
+      
     </DivLesson>
   );
 }
