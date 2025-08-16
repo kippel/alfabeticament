@@ -41,7 +41,11 @@ const Courses = () => {
               Authorization: `Bearer ${session?.accessToken}`, 
           },
       });
-      
+      /*
+      console.log(res.data.languages)
+      console.log(res.data.user_courses)
+      console.log("ffff foo")
+      */
       setIndex(false);
       setLanguages(res.data.languages);
       setUserCourses(res.data.user_courses);
@@ -79,9 +83,8 @@ const Courses = () => {
   return (
     <div className="pt-6 grid grid-cols-2 lg:grid-cols-[repeat(auto-fill, minmax(210px, 1fr))] gap-4">
       {languages.map((word) => (
-        
-          <CoursesRed 
-            key={word.id}
+          
+          <CoursesRed key={word.id}
             id={word.id}
             title={word.title}
             images={word.image_src} 

@@ -59,7 +59,7 @@ const data = {
       items: [
         {
           title: "History",
-          url: "#",
+          url: "/dash/abecedaris",
         },
         {
           title: "Starred",

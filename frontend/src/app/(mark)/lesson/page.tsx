@@ -1,8 +1,0 @@
-
-
-
-function LessonPage() {
-    return (
-        <>lesson</>
-    )
-}
