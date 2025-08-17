@@ -43,6 +43,7 @@ export const AbecedariLesson = ({ id }: Props) => {
         if (!session?.accessToken) return;
 
         async function fetchPosts() {
+            console.log(`${backendUrl}/abc/abc_abcedaris/${id}`)
             const res = await axios.get(`${backendUrl}/abc/abc_abcedaris/${id}`, {
                 headers: {
                     Authorization: `Bearer ${session?.accessToken}`, 

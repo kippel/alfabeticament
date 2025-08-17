@@ -41,11 +41,7 @@ const Courses = () => {
               Authorization: `Bearer ${session?.accessToken}`, 
           },
       });
-      /*
-      console.log(res.data.languages)
-      console.log(res.data.user_courses)
-      console.log("ffff foo")
-      */
+      
       setIndex(false);
       setLanguages(res.data.languages);
       setUserCourses(res.data.user_courses);
@@ -68,7 +64,7 @@ const Courses = () => {
 
 
         
-        
+        // TODO: courses
         setUserCourses(res.data.user_courses); 
     }
     red();

@@ -58,7 +58,7 @@ function AbecedarisPage() {
 
   return (
     <DivLesson text="Abecedari">
-      {renderList("Abc", "/lesson")}
+      {renderList("Abc", "/lesson/lesson")}
       
     </DivLesson>
   );

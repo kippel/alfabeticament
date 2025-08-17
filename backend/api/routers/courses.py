@@ -57,6 +57,14 @@ def create_user_courses_id(user: user_dependency, db: db_dependency):
     
     return cour
 
+def data_red(cour):
+    data = {
+         "courses_title": cour.courses_title,
+         "image_src" : cour.image_src,
+         "courses" : cour.courses
+    }
+    return data
+
 '''
     GET /courses
 '''
@@ -64,14 +72,17 @@ def create_user_courses_id(user: user_dependency, db: db_dependency):
 async def courses(user: user_dependency, db: db_dependency):
 
     courses_all = db.query(Courses).all()
-
+    #print(courses_all)
     cour = create_user_courses_id(user, db)
     
+    data = data_red(cour)
+    ''' 
     data = {
         "courses_title": cour.courses_title,
       "image_src" : cour.image_src,
       "courses" : cour.courses
     }
+    '''
     
     return {"languages": courses_all, "user_courses": data}
 
@@ -92,12 +103,23 @@ async def courses_post(payload: CoursesRequest, user: user_dependency, db: db_de
     
     cour = user_courses_id(user, db, courses_all)
     
+    data = data_red(cour)
+    ''' 
     data = {
         "courses_title": cour.courses_title,
       "image_src" : cour.image_src,
       "courses" : cour.courses
     }
+    '''
     
     return {"user_courses": data}
 
 
+@router.get("/red")
+async def courses_red(user: user_dependency, db: db_dependency):
+
+    cour = create_user_courses_id(user, db)
+    
+    data = data_red(cour)
+
+    return { "courses" : data}
