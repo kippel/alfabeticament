@@ -1,49 +1,17 @@
 "use client";
 import { DivLesson } from "@/components/div/div-lesson";
-import axios from "axios";
-import { useState, useEffect } from "react";
+
 import Link from "next/link";
-import { useAuth } from '@/components/auth';
+
+import useAbecedaris from "@/components/update/useAbecedaris"
 
 
-
-type AbecedarisProps = {
-  id: number;
-  lletres: string;
-  courses: string;
-  abecedaris_id: string;
-};
 
 function AbecedarisPage() {
-  const [abc, setAbc] = useState<AbecedarisProps[]>([]);
-  const [index, setIndex] = useState<boolean>(true);
-  const { data: session} = useAuth();
+  const { abc, loading } = useAbecedaris();
 
-  useEffect(() => {
-
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-      if (!session?.accessToken) return;
-      //const { backendUrl: backendUrl } = backendUrl();
-      
-
-    async function fetchPosts() {
-      //console.log(`/api/abcs/)
-      const res = await axios.get(`${backendUrl}/abc/abcedaris`,
-         {
-          headers: {
-              Authorization: `Bearer ${session?.accessToken}`, 
-          },
-      });
-      
-      
-      setIndex(false);
-      setAbc(res.data.abecedari);
-    }
-
-    fetchPosts();
-  }, [session]);
-
-  if (index) return <div>Loading...</div>;
+  if (loading) return <div>Loading...</div>;
+  
 
   const renderList = (title: string, pathPrefix: string) => (
     <>

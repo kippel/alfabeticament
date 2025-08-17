@@ -18,7 +18,7 @@ export const authOptions: NextAuthOptions = {
             async authorize(credentials, req){
 
                 
-
+                // TODO: user
                 if (!credentials?.username || !credentials?.password) return null;
                 const { username, password } = credentials;
                 

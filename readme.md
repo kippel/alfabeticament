@@ -4,3 +4,7 @@
 
 - uv run python -m api.cli run
 - uv run python -m api.cli create-user --username admin --password qwerty
+
+
+
+
