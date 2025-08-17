@@ -1,6 +1,7 @@
 import { JSX } from "react";
 import {AbecedariLesson} from "./AbecedariLesson";
 
+
 type PageProps = {
     params: {
         id: number;

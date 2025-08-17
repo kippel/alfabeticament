@@ -35,7 +35,7 @@ export const AbecedariLesson = ({ id }: Props) => {
 
     //const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
     const { data: session} = useAuth();
-
+    
 
     useEffect(() => {
 

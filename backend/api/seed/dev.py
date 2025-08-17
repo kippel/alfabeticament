@@ -24,7 +24,7 @@ def courses_dependency(db=SessionLocal()):
 
     with open(os.path.join(BASE_DIR, 'code/courses.json'), 'r') as file:
         data = json.load(file)
-
+    
     for course in data:
         course_model = Courses(
             id=course['id'],
