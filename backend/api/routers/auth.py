@@ -21,7 +21,10 @@ SECRET_KEY = os.getenv("AUTH_SECRET_KEY")
 ALGORITHM = os.getenv("AUTH_ALGORITHM")
 
 def authenticate_user(username: str, password: str, db):
-    user = db.query(User).filter(User.username == username).first()
+    user = db.query(User) \
+             .filter(User.username == username) \
+             .first()
+    
     if not user:
         return False
     if not bcrypt_context.verify(password, user.hashed_password):
@@ -51,7 +54,10 @@ async def create_register(create_registers: UserCreateRegister, db: db_dependenc
             detail="Passwords do not match",
         )
     
-    create = db.query(User).filter(User.username == create_registers.username).first()
+    create = db.query(User) \
+               .filter(User.username == create_registers.username) \
+               .first()
+    
     if create:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -106,38 +112,5 @@ async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm,
 
 
 
-''' 
-/auth/sessions
-'''
 
 
-
-
-''' 
-@router.post("/sessions")
-async def sessions(users: UserRequest, db: db_dependency):
-
-    #print(form_data)
-    
-    user = authenticate_user(users.username, users.password, db)
-    
-    if not user:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect username or password",
-            headers={"WWW-Authenticate": "Bearer"},
-        )
-    token = create_access_token(
-        username=user.username,
-        user_id=user.id,        
-        expires_delta=timedelta(minutes=30)
-    )
-    
-    user_id = {
-       "sub": user.username,
-       "id": user.id
-    }
-
-    return {"access_token": token, "token_type": "bearer", "user" : user_id}
-
-'''    

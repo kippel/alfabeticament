@@ -47,6 +47,7 @@ class AbecedarisAbcLletres(Base):
     lletres_blue = Column(String)
     voice_mp3 = Column(String) 
     abecedaris_id = Column(Integer) 
+    courses = Column(String)
 
 ''' 
 class AbecedAbcLletres(Base):

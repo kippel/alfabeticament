@@ -19,9 +19,22 @@ async def get_abc(user: user_dependency, db: db_dependency):
     n = CreateUserCoursesId(user, db)
     data = n.data()
     
+    abc = db.query(AbcedarisAbc) \
+            .filter(AbcedarisAbc.courses==data['courses']) \
+            .all()
 
-    return {"abecedari" : db.query(AbcedarisAbc).filter(AbcedarisAbc.courses==data['courses']).all()}
+    return {"abecedari" : abc}
 
 @router.get("/abc_abcedaris/{abecedaris_id}")
 async def get_abc_lletres(user: user_dependency, db: db_dependency, abecedaris_id: int):
-    return { "get_abc_lletres" : db.query(AbecedarisAbcLletres).filter(AbecedarisAbcLletres.abecedaris_id == abecedaris_id).all() }
+    ## todo: 
+
+    n = CreateUserCoursesId(user, db)
+    data = n.data()
+
+    abc = db.query(AbecedarisAbcLletres) \
+            .filter(AbecedarisAbcLletres.abecedaris_id == abecedaris_id) \
+            .filter(AbecedarisAbcLletres.courses==data['courses']) \
+            .all()
+
+    return { "get_abc_lletres" : abc }

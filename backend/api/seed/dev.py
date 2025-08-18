@@ -60,7 +60,8 @@ def abecedaris_abc_lletres(data, db):
             lletres=abc['lletres'],
             lletres_blue=abc['lletres_blue'],
             voice_mp3=abc['voice_mp3'],
-            abecedaris_id=abc['abecedaris_id']
+            abecedaris_id=abc['abecedaris_id'],
+            courses=abc['courses']
         )
         db.add(abc_model)
         
