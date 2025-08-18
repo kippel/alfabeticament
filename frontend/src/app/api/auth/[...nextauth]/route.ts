@@ -15,13 +15,10 @@ export const authOptions: NextAuthOptions = {
                 password: { label: "Password", type: "password"},
             },
             async authorize(credentials, req){
-
-                
-                // TODO: user
+        
                 if (!credentials?.username || !credentials?.password) return null;
                 const { username, password } = credentials;
                 
-
                 const data = await login(username, password)
                 if (!data) return null;
 
@@ -31,8 +28,6 @@ export const authOptions: NextAuthOptions = {
                     id: data.user.id,
                     name: data.user.username
                 } as any;
-
-                
             },
         }),
     ],
