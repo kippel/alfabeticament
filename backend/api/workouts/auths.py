@@ -4,9 +4,77 @@ from api.deps import (
 )
 from api.models import UserCourses, Courses
 
+class UserRequest:
+
+    def data(self):
+        data = {
+            "courses_title": self.cour.courses_title,
+            "image_src" : self.cour.image_src,
+            "courses" : self.cour.courses
+        }
+        return data
+
+class UserCoursesId(UserRequest):
+
+    def __init__(self, user: user_dependency, db: db_dependency, courses_all: Courses):
+        self.cour = None
+
+        self._course_id(user, db, courses_all)
+    
+    def _course_id(self, user: user_dependency, db: db_dependency, courses_all: Courses):
+        user_courses = db.query(UserCourses).filter(UserCourses.user_id == user['id']).first()
+    
+        if not user_courses:
+            cour_old = UserCourses(
+                courses_title=courses_all.courses_title,
+                image_src=courses_all.image_src,
+                courses=courses_all.courses,
+                user_id=user['id']
+            )
+
+            db.add(cour_old)
+            db.commit()
+
+        else:
+            db.query(UserCourses) \
+                    .filter(UserCourses.user_id == user['id']) \
+                    .update({
+                    "courses_title" : courses_all.title,
+                    "image_src" : courses_all.image_src,
+                    "courses" : courses_all.courses
+                    })
+            db.commit()
+
+            cour_old = db.query(UserCourses).filter(UserCourses.user_id == user['id']).first()
+
+        self.cour = cour_old
+
+class CreateUserCoursesId(UserRequest):
+
+    def __init__(self, user: user_dependency, db: db_dependency):
+        self.cour = None
+
+        self._course_id(user, db)
+
+    def _course_id(self, user: user_dependency, db: db_dependency):
+        user_courses = db.query(UserCourses).filter(UserCourses.user_id == user['id']).first()
+        if not user_courses:
+            cour_old = UserCourses(
+                courses_title='Catala',
+                image_src="/flag/Catala.svg",
+                courses="ca",
+                user_id=user['id']
+            )
+
+            db.add(cour_old)
+            db.commit()
+
+            self.cour = cour_old
+        else:
+            self.cour = user_courses
 
 
-
+''' 
 def user_courses_id(user: user_dependency, db: db_dependency, courses_all: Courses):
     user_courses = db.query(UserCourses).filter(UserCourses.user_id == user['id']).first()
     
@@ -33,7 +101,9 @@ def user_courses_id(user: user_dependency, db: db_dependency, courses_all: Cours
 
         cour = db.query(UserCourses).filter(UserCourses.user_id == user['id']).first()
     return cour
-
+'''
+    
+'''
 def create_user_courses_id(user: user_dependency, db: db_dependency):
     user_courses = db.query(UserCourses).filter(UserCourses.user_id == user['id']).first()
     if not user_courses:
@@ -58,3 +128,4 @@ def data_red(cour):
          "courses" : cour.courses
     }
     return data
+'''

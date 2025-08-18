@@ -7,7 +7,9 @@ from api.deps import (
     
 )
 from api.schemas import CoursesRequest
-from api.workouts.auths import user_courses_id, create_user_courses_id, data_red
+#from api.workouts.auths import user_courses_id, create_user_courses_id, data_red
+from api.workouts.auths import UserCoursesId, CreateUserCoursesId
+
 
 router = APIRouter(prefix="/courses", tags=["courses"])
 
@@ -21,13 +23,12 @@ router = APIRouter(prefix="/courses", tags=["courses"])
 async def courses(user: user_dependency, db: db_dependency):
 
     courses_all = db.query(Courses).all()
-    #print(courses_all)
-    cour = create_user_courses_id(user, db)
     
-    data = data_red(cour)
-    
-    return {"languages": courses_all, "user_courses": data}
+    n = CreateUserCoursesId(user, db)
+    data = n.data()
 
+    return {"languages": courses_all, "user_courses": data}
+    
 
 
 
@@ -43,19 +44,16 @@ async def courses_post(payload: CoursesRequest, user: user_dependency, db: db_de
     if not courses_all:
         return {"error": "Course not found"}, 404
     
-    cour = user_courses_id(user, db, courses_all)
-    
-    data = data_red(cour)
-    
-    
+    n = UserCoursesId(user, db, courses_all)
+    data = n.data()
+
     return {"user_courses": data}
 
 
 @router.get("/red")
 async def courses_red(user: user_dependency, db: db_dependency):
-
-    cour = create_user_courses_id(user, db)
     
-    data = data_red(cour)
+    n = CreateUserCoursesId(user, db)
+    data = n.data()
 
     return { "courses" : data}
