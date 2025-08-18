@@ -8,7 +8,7 @@ function DashPage() {
     //console.log(localStorage.getItem("token"))
 
     const { data: session } = useSession();
-
+    console.log(session?.user?.name)
     const { courses } = useCourses();
     console.log(courses)
     return (

@@ -28,35 +28,28 @@ export const authOptions: NextAuthOptions = {
                 const params = new URLSearchParams();
                 params.append("username", username);
                 params.append("password", password);
+                try {
+                    const res = await axios.post(`${backendUrl}/auth/token`, params, {
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                    });
 
-                const res = await axios.post(`${backendUrl}/auth/token`, params, {
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded",
-                    },
-                });
+                    const data = res.data;
 
+                    //console.log("✅ Login successful:", data);
+                    return {
+                        token: data.access_token,
+                        accessToken: data.access_token,
+                        id: data.user.id,
+                        name: data.user.username
+                    
+                    };
 
-                /*
-                const res = await axios.post(`${backendUrl}/auth/login`, {
-                        username,
-                        password,
-                });
-                */
-
-                const data = res.data;
-
-                console.log("✅ Login successful:", data);
-
-
-
-                //return data; // must include at least a `user` object
-                
-                return {
-                    token: data.access_token,
-                    accessToken: data.access_token
-                };
-
-                
+                } catch (err) {
+                    console.error("❌ Login failed:", err);
+                    return null;
+                }
                 //return res.data.user //user;
             },
         }),
@@ -68,14 +61,15 @@ export const authOptions: NextAuthOptions = {
         async jwt({ token, user }) {
             if (user){
                 token.accessToken = user.accessToken;
-                
+                token.user = user;
             } 
             
             return token;
 
         },
         async session({ session, token }) {
-            session.accessToken = token.accessToken;
+            session.accessToken = token.accessToken as any;
+            session.user = token.user as any;
             
             return session;
         }
@@ -83,10 +77,6 @@ export const authOptions: NextAuthOptions = {
     pages: {
       signIn: '/' 
     },
-
-
-
-
 };
 
 const handler = NextAuth(authOptions);

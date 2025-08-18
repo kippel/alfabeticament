@@ -97,12 +97,26 @@ async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm,
         user_id=user.id,        
         expires_delta=timedelta(minutes=30)
     )
-    
-    return {"access_token": token, "token_type": "bearer"}
 
+    user_id = {
+        'username' : user.username,
+        'id' : user.id 
+    }
+    
+    return {"access_token": token, "token_type": "bearer", "user" : user_id}
+
+
+
+''' 
+/auth/sessions
 '''
-@router.post("/login")
-async def login_token(users: UserRequest, db: db_dependency):
+
+
+
+
+''' 
+@router.post("/sessions")
+async def sessions(users: UserRequest, db: db_dependency):
 
     #print(form_data)
     
@@ -126,5 +140,5 @@ async def login_token(users: UserRequest, db: db_dependency):
     }
 
     return {"access_token": token, "token_type": "bearer", "user" : user_id}
-'''
-    
+
+'''    
