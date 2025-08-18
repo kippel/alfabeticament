@@ -1,11 +1,10 @@
-import axios from "axios";
 import NextAuth, { NextAuthOptions } from "next-auth";
-import CreadentialsProvider from "next-auth/providers/credentials";
-
+import CredentialsProvider from "next-auth/providers/credentials";
+import { login } from "@/app/api/auth/[...nextauth]/login";
 
 export const authOptions: NextAuthOptions = {
     providers: [
-        CreadentialsProvider({
+        CredentialsProvider({
             name: "Credentials",
             credentials: {
                 username: {
@@ -22,35 +21,18 @@ export const authOptions: NextAuthOptions = {
                 if (!credentials?.username || !credentials?.password) return null;
                 const { username, password } = credentials;
                 
-                const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+                const data = await login(username, password)
+                if (!data) return null;
+
+                return {
+                    token: data.access_token,
+                    accessToken: data.access_token,
+                    id: data.user.id,
+                    name: data.user.username
+                } as any;
+
                 
-
-                const params = new URLSearchParams();
-                params.append("username", username);
-                params.append("password", password);
-                try {
-                    const res = await axios.post(`${backendUrl}/auth/token`, params, {
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded",
-                        },
-                    });
-
-                    const data = res.data;
-
-                    //console.log("✅ Login successful:", data);
-                    return {
-                        token: data.access_token,
-                        accessToken: data.access_token,
-                        id: data.user.id,
-                        name: data.user.username
-                    
-                    };
-
-                } catch (err) {
-                    console.error("❌ Login failed:", err);
-                    return null;
-                }
-                //return res.data.user //user;
             },
         }),
     ],
