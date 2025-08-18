@@ -71,6 +71,10 @@ export const AbecedariLesson = ({ id }: Props) => {
         
     };
 
+    const headerxCheck = () => {
+        router.push('/dash/abecedaris')
+    }
+
     const currentPost = posts[coute];
 
     // Calculate percentage based on current progress
@@ -87,7 +91,7 @@ export const AbecedariLesson = ({ id }: Props) => {
 
     return (
         <>
-        <Header percentage={percentage} />
+        <Header percentage={percentage} headerx={headerxCheck} />
         <DivBar>
             {currentPost && (
                <AbcLesson   
