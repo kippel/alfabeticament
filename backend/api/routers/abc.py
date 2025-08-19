@@ -1,4 +1,9 @@
-from api.models import AbcedarisAbc, AbecedarisAbcLletres
+from api.models import (
+    AbcedarisAbc, 
+    AbecedarisAbcLletres,
+    AbcBar
+)
+
 from fastapi import APIRouter
 from api.deps import (
     db_dependency,
@@ -13,7 +18,7 @@ router = APIRouter(prefix="/abc", tags=["abc"])
 /abc/abcedaris
  '''
 
-@router.get("/abcedaris")
+@router.get("/abcedaris", tags=["abc"])
 async def get_abc(user: user_dependency, db: db_dependency):
     # AbecedarisAbcLletres, AbcedarisAbc
     n = CreateUserCoursesId(user, db)
@@ -25,7 +30,7 @@ async def get_abc(user: user_dependency, db: db_dependency):
 
     return {"abecedari" : abc}
 
-@router.get("/abc_abcedaris/{abecedaris_id}")
+@router.get("/abc_abcedaris/{abecedaris_id}", tags=["abc"])
 async def get_abc_lletres(user: user_dependency, db: db_dependency, abecedaris_id: int):
     ## todo: 
 
@@ -38,3 +43,9 @@ async def get_abc_lletres(user: user_dependency, db: db_dependency, abecedaris_i
             .all()
 
     return { "get_abc_lletres" : abc }
+
+#########################################################################
+
+@router.get("/abc_bar", tags=["bar"])
+async def get_abc_bar(user: user_dependency, db: db_dependency):
+    return { "abc_bar" : db.query(AbcBar).all()}

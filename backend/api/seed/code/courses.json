@@ -1,6 +1,6 @@
 [
-    { "id": 1, "title": "Catala", "imageSrc": "/flag/Catala.svg", "courses": "ca"
+    { "id": 1, "title": "Catala", "image_src": "/flag/Catala.svg", "courses": "ca"
     },
-    { "id": 2, "title": "Español", "imageSrc": "/flag/Espanol.svg", "courses": "es"
+    { "id": 2, "title": "Español", "image_src": "/flag/Espanol.svg", "courses": "es"
     }
 ]

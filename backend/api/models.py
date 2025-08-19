@@ -6,81 +6,86 @@ from .database import Base
 
 
 class User(Base):
-    __tablename__ = "users"
+  __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True, index=True)
-    username = Column(String, unique=True, index=True)
-    hashed_password = Column(String)
-    user_courses = relationship("UserCourses", backref=backref('users', uselist = False))  
+  id = Column(Integer, primary_key=True, index=True)
+  username = Column(String, unique=True, index=True)
+  hashed_password = Column(String)
+  user_courses = relationship("UserCourses", backref=backref('users', uselist = False))  
 
 class Courses(Base):
-    __tablename__ = "courses"
+  __tablename__ = "courses"
     
-    id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, unique=True)
-    image_src = Column(String, unique=True)
-    courses = Column(String, unique=True)
+  id = Column(Integer, primary_key=True, index=True)
+  title = Column(String, unique=True)
+  image_src = Column(String, unique=True)
+  courses = Column(String, unique=True)
 
 
 class UserCourses(Base):
-    __tablename__ = "user_courses"
-    id = Column(Integer, primary_key=True, index=True)
+  __tablename__ = "user_courses"
+  id = Column(Integer, primary_key=True, index=True)
      
-    courses_title = Column(String, unique=True)
-    image_src = Column(String, unique=True)
-    courses = Column(String, unique=True)
-    user_id = Column(Integer(), ForeignKey('users.id')) 
+  courses_title = Column(String, unique=True)
+  image_src = Column(String, unique=True)
+  courses = Column(String, unique=True)
+  user_id = Column(Integer(), ForeignKey('users.id')) 
 
-
+###############################################################
 class AbcedarisAbc(Base):
-    __tablename__ = "abcedaris_abc"
-    id = Column(Integer, primary_key=True, index=True)
-    lletres = Column(String)
-    courses = Column(String)
-    abecedaris_id = Column(Integer)
+  __tablename__ = "abcedaris_abc"
+  id = Column(Integer, primary_key=True, index=True)
+  lletres = Column(String)
+  courses = Column(String)
+  abecedaris_id = Column(Integer)
 
 class AbecedarisAbcLletres(Base):
-    __tablename__ = "abcedaris_abc_lletres"
-    id = Column(Integer, primary_key=True, index=True)
+  __tablename__ = "abcedaris_abc_lletres"
+  id = Column(Integer, primary_key=True, index=True)
 
-    lletres = Column(String)
-    lletres_blue = Column(String)
-    voice_mp3 = Column(String) 
-    abecedaris_id = Column(Integer) 
-    courses = Column(String)
+  lletres = Column(String)
+  lletres_blue = Column(String)
+  voice_mp3 = Column(String) 
+  abecedaris_id = Column(Integer) 
+  courses = Column(String)
 
-''' 
-class AbecedAbcLletres(Base):
-    __tablename__ = "abced_abc_lletres"
-    id = Column(Integer, primary_key=True, index=True)
+###########################################################
+class AbcBar(Base):
+  __tablename__ = "abc_bar"
+  id = Column(Integer, primary_key=True, index=True)    
 
-    voice_mp3 =  Column(String, unique=True) 
-    abecedaris_id = Column(Integer, unique=True)
-    courses = Column(String, unique=True)
-'''
+  title = Column(String)
+  name = Column(String)
+  courses = Column(String)
 
-''' 
-model Abecedari_abc {
-  id        Int      @default(autoincrement()) @id
-  lletres   String
-  abecedariId Int
-  courses String
-}
+class AbcList(Base):
+  __tablename__ = "abc_list"
+  id = Column(Integer, primary_key=True, index=True) 
 
-model Abecedari_abc_lletres {
-  id          Int      @default(autoincrement()) @id
-  lletres     String
-  lletres_blue String
-  voice_mp3   String
-  abecedariId Int
-  courses String
-}
+  abc_id = Column(Integer)
+  courses = Column(String) 
+  title = Column(String) 
 
+class AbcUn(Base):
+  __tablename__ = "abc_un"
+  id = Column(Integer, primary_key=True, index=True) 
 
-model Abeced_abc_lletres {
-  id          Int      @default(autoincrement()) @id
-  voice_mp3   String
-  abecedariId Int
-  courses String
-}
-'''
+  abc_un_id = Column(Integer)
+  nom = Column(String)
+  number = Column(Integer)
+  number_bar = Column(Integer)
+  courses = Column(String)
+  
+class AbcDos(Base):
+  __tablename__ = "abc_dos"
+  id = Column(Integer, primary_key=True, index=True) 
+
+  
+  abc_dos_id = Column(Integer)
+  lletres = Column(String)
+  voice_mp3 = Column(String)
+  vocals_images = Column(String)
+  number = Column(Integer)
+  number_bar = Column(Integer)
+  courses = Column(String)   
+          

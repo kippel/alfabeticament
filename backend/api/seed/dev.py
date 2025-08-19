@@ -1,5 +1,14 @@
 from api.database import SessionLocal, engine, Base
-from api.models import User, Courses, AbcedarisAbc, AbecedarisAbcLletres
+from api.models import (
+    User, 
+    Courses, 
+    AbcedarisAbc, 
+    AbecedarisAbcLletres,
+    AbcBar,
+    AbcList,
+    AbcUn,
+    AbcDos
+)
 from api.deps import bcrypt_context
 import json, os
 
@@ -24,50 +33,11 @@ def courses_dependency(db=SessionLocal()):
 
     with open(os.path.join(BASE_DIR, 'code/courses.json'), 'r') as file:
         data = json.load(file)
-    
-    for course in data:
-        course_model = Courses(
-            id=course['id'],
-            title=course['title'],
-            image_src=course['imageSrc'],
-            courses=course['courses']
-        )
-        db.add(course_model)
-        
-    db.commit()
-
-######################################################
-def abc_abcedaris_abc(data, db):
-    
-    for abc in data:
-        
-        abc_model = AbcedarisAbc(
-            id=abc['id'],
-            lletres=abc['lletres'],
-            courses=abc['courses'],
-            abecedaris_id=abc['abecedaris_id']
-        )
-        db.add(abc_model)
-        
-    db.commit()
 
 
-def abecedaris_abc_lletres(data, db):
-    for abc in data:
-        
-        abc_model = AbecedarisAbcLletres(
-            id=abc['id'],
-            lletres=abc['lletres'],
-            lletres_blue=abc['lletres_blue'],
-            voice_mp3=abc['voice_mp3'],
-            abecedaris_id=abc['abecedaris_id'],
-            courses=abc['courses']
-        )
-        db.add(abc_model)
-        
-    db.commit()
-
-def abc_dependency(db=SessionLocal()):
+    abc_dependency(Courses, data, db)
+  
+def abc_dependency_bar(db=SessionLocal()):
     db.query(AbcedarisAbc).delete(synchronize_session=False)
     db.commit()
 
@@ -77,20 +47,45 @@ def abc_dependency(db=SessionLocal()):
     with open(os.path.join(BASE_DIR, 'code/abc.json'), 'r') as file:
         data = json.load(file)
 
-    abc_abcedaris_abc(data['abcedaris_abc'], db)
-    abecedaris_abc_lletres(data['abcedaris_abc_lletres'], db)
+    abc_dependency(AbcedarisAbc, data['abcedaris_abc'], db)
+    abc_dependency(AbecedarisAbcLletres, data['abcedaris_abc_lletres'], db)
+
+    
 ###########################################################
+def abc_bar_dependency(db=SessionLocal()):
+    for bar in [AbcBar, AbcList, AbcUn, AbcDos]:
+        db.query(bar).delete(synchronize_session=False)
+        db.commit()
+
+    with open(os.path.join(BASE_DIR, 'code/abc_bar.json'), 'r') as file:
+        data = json.load(file)
+    
+    abc_dependency(AbcBar, data['abc_bar'], db)
+    abc_dependency(AbcList, data['abc_list'], db)
+    abc_dependency(AbcUn, data['abc_un'], db)
+    abc_dependency(AbcDos, data['abc_dos'], db)
+
+def abc_dependency(abcabc, data, db):
+    for abc in data:
+        abc_model = abcabc(**abc)
+        db.add(abc_model)
+        
+    db.commit()
 
 
+##############################################################
 def seed():
     Base.metadata.create_all(bind=engine)
     db = SessionLocal()
-
+    #########
     user_dependency(db)
     courses_dependency(db)
-    
-    abc_dependency(db)
+    ##########
+    abc_dependency_bar(db)
+    ##########
+    abc_bar_dependency(db)
 
+    ############
     db.close()
     
     print("Seed completado.")

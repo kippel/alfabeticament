@@ -1,0 +1,147 @@
+{ "abc_bar" :[
+    {
+        "id": 1,
+        "title": "Monosíl.labs",
+        "name": "Paraula d’una sola síl·laba",
+        "courses": "ca"
+    },
+    {
+        "id": 2,
+        "title": "Bisíl·labs",
+        "name": "Un bisíl·lab és una paraula que té dues síl·labes",
+        "courses": "ca"
+    },
+    {
+        "id": 3,
+        "title": "Trisílabs",
+        "name": "Un trisíl·lab és una paraula que té tres síl·labes",
+        "courses": "ca"
+    }
+    ],
+    "abc_list": [
+        {
+            "id": 1,
+            "abc_id": 1,
+            "courses": "ca",
+            "title": "Monosíl.labs 1"
+        },
+        {
+            "id": 2,
+            "abc_id": 1,
+            "courses": 1,
+            "title": "Monosíl.labs 2"
+        }
+    ],
+    "abc_un" : [
+      {
+          "id": 1,
+          "abc_un_id": 1,
+          "nom": "dos",
+          "number": 1,
+          "number_bar": 1,
+          "courses" : "ca"
+      },
+      {
+          "id": 2,
+          "abc_un_id" : 1,
+          "nom": "dos",
+          "number": 2,
+          "number_bar": 1,
+          "courses" : "ca"
+      },
+      {
+          "id": 3,
+          "abc_un_id": 1,
+          "nom": "dos",
+          "number": 3,
+          "number_bar": 1,
+          "courses" : "ca"
+      },
+      {
+          "id": 4,
+          "abc_un_id": 1,
+          "nom": "dos",
+          "number": 4,
+          "number_bar": 1,
+          "courses" : "ca"
+      },
+      {
+          "id": 5,
+          "abc_un_id": 1,
+          "nom": "dos",
+          "number": 5,
+          "number_bar": 1,
+          "courses" : "ca"
+      },
+      {
+          "id": 6,
+          "abc_un_id": 1,
+          "nom": "dos",
+          "number": 6,
+          "number_bar": 1,
+          "courses" : "ca"
+      }
+    ],
+    "abc_dos" : [
+        {
+          "id": 1,
+          "abc_dos_id": 1,
+          "lletres": "pa",
+          "voice_mp3": "/mp3/ca/pa.mp3",
+          "vocals_images": "/images/bread.svg",
+          "number": 1,
+          "number_bar": 1,
+          "courses" : "ca"
+        },
+        {
+          "id": 2,
+          "abc_dos_id": 1,
+          "lletres": "sol",
+          "voice_mp3": "/mp3/ca/sol.mp3",
+          "vocals_images": "/images/sun.svg",
+          "number": 2,
+          "number_bar": 1,
+          "courses" : "ca"
+        },
+        {
+          "id": 3,
+          "abc_dos_id": 1,
+          "lletres": "ou",
+          "voice_mp3": "/mp3/ca/ou.mp3",
+          "vocals_images": "/images/egg.svg",
+          "number": 3,
+          "number_bar": 1,
+          "courses" : "ca"
+        },
+        {
+          "id": 4,
+          "abc_dos_id": 1,
+          "lletres": "col",
+          "voice_mp3": "/mp3/ca/col.mp3",
+          "vocals_images": "/images/cabbage.svg",
+          "number": 4,
+          "number_bar": 1,
+          "courses" : "ca"
+        },
+        {
+          "id": 5,
+          "abc_dos_id": 1,
+          "lletres": "ull",
+          "voice_mp3": "/mp3/ca/ull.mp3",
+          "vocals_images": "/images/eye.svg",
+          "number": 5,
+          "number_bar": 1,
+          "courses" : "ca"
+        },
+        {
+          "id": 6,
+          "abc_dos_id": 1,
+          "lletres": "dau",
+          "voice_mp3": "/mp3/ca/dau.mp3",
+          "vocals_images": "/images/dice.svg",
+          "number": 6,
+          "number_bar": 1,
+          "courses" : "ca"
+        }
+    ]
+}
