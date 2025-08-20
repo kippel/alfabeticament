@@ -28,7 +28,7 @@
         {
             "id": 2,
             "abc_id": 1,
-            "courses": 1,
+            "courses": "ca",
             "title": "Monosíl.labs 2"
         }
     ],

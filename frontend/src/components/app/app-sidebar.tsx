@@ -58,12 +58,12 @@ const data = {
           url: "/dash/abecedaris",
         },
         {
-          title: "Starred",
-          url: "#",
+          title: "Abc Bar",
+          url: "/dash/abc",
         },
         {
           title: "Settings",
-          url: "#",
+          url: "/dash/red",
         },
       ],
     },

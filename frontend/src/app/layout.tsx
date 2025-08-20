@@ -31,6 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Providers>
         <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -38,12 +39,12 @@ export default function RootLayout({
             disableTransitionOnChange
           >
           
-         <Providers>     
+              
         {children}
-        </Providers>
+        
         <AppToaster />
         </ThemeProvider> 
-        
+        </Providers>
       </body>
     </html>
   );

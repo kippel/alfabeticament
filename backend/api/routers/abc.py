@@ -1,7 +1,8 @@
 from api.models import (
     AbcedarisAbc, 
     AbecedarisAbcLletres,
-    AbcBar
+    AbcBar,
+    AbcList
 )
 
 from fastapi import APIRouter
@@ -48,4 +49,24 @@ async def get_abc_lletres(user: user_dependency, db: db_dependency, abecedaris_i
 
 @router.get("/abc_bar", tags=["bar"])
 async def get_abc_bar(user: user_dependency, db: db_dependency):
-    return { "abc_bar" : db.query(AbcBar).all()}
+    
+    n = CreateUserCoursesId(user, db)
+    data = n.data()
+
+    abc_bar = db.query(AbcBar).filter(AbcBar.courses == data['courses']).all()
+    
+    return { "abc_bar" : abc_bar }
+
+
+@router.get('/abc_list/{abc_id}', tags=["bar"])
+async def get_abc_list(abc_id: int, user: user_dependency, db: db_dependency):
+
+    n = CreateUserCoursesId(user, db)
+    data = n.data()
+
+    abc_list = db.query(AbcList) \
+                 .filter(AbcList.courses == data['courses']) \
+                 .filter(AbcList.abc_id == abc_id) \
+                 .all()
+
+    return { "abc_list" : abc_list }

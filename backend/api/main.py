@@ -18,6 +18,7 @@ app.add_middleware(
 
 from api.models import User
 from api.deps import db_dependency
+
 @app.get("/")
 def root(db: db_dependency):
 
