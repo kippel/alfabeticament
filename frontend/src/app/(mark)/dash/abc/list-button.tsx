@@ -9,7 +9,7 @@ import {
 } from "react-circular-progressbar";
 import Link from "next/link";
 import "react-circular-progressbar/dist/styles.css";
-
+import { CycleIndex } from "@/components/lessons/cycleIndex";
 
 type Props = {
     abc_un: number;
@@ -26,7 +26,7 @@ export const ListButton = ({
 }: Props) => {
 
     const { theme, setTheme } = useTheme();
-
+    /*
     const cycleLength = 8;
     const cycleIndex = index % cycleLength;
 
@@ -43,6 +43,8 @@ export const ListButton = ({
     }
 
     const rightPosition = indentationLevel * 40;
+    */
+    const { rightPosition } = CycleIndex({ index });
 
     const href = `/lesson/${abc_un}`
     const percentage = 75;
