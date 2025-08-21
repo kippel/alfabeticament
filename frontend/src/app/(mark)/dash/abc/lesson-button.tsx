@@ -25,7 +25,7 @@ export const LessonButton = ({ abc_id } : Props) => {
             abcList.map((abc_b : AbcItem, index: number) => (
                 <ListButton 
                   key={abc_b.id}
-                  abc_id={abc_b.id}
+                  abc_un={abc_b.id}
                   title={abc_b.title}
                   index={index} 
 

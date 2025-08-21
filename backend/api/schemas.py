@@ -31,3 +31,7 @@ class CoursesRequest(BaseModel):
     coursesId: str
 
 ## abc
+class AbcDosRequest(BaseModel):
+    abc_dos_id: int
+    number: int
+    number_bar: int

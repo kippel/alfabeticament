@@ -12,7 +12,7 @@ import "react-circular-progressbar/dist/styles.css";
 
 
 type Props = {
-    abc_id: number;
+    abc_un: number;
     title: string;
     index: number;
 }
@@ -20,7 +20,7 @@ type Props = {
 
 
 export const ListButton = ({
-    abc_id,
+    abc_un,
     title,
     index
 }: Props) => {
@@ -44,7 +44,7 @@ export const ListButton = ({
 
     const rightPosition = indentationLevel * 40;
 
-    const href = `/lesson/${abc_id}`
+    const href = `/lesson/${abc_un}`
     const percentage = 75;
 
     return (

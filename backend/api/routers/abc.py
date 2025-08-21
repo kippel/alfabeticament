@@ -2,7 +2,9 @@ from api.models import (
     AbcedarisAbc, 
     AbecedarisAbcLletres,
     AbcBar,
-    AbcList
+    AbcList,
+    AbcUn,
+    AbcDos
 )
 
 from fastapi import APIRouter
@@ -12,6 +14,7 @@ from api.deps import (
     
 )
 from api.workouts.auths import CreateUserCoursesId
+from api.schemas import AbcDosRequest
 
 router = APIRouter(prefix="/abc", tags=["abc"])
 
@@ -53,7 +56,9 @@ async def get_abc_bar(user: user_dependency, db: db_dependency):
     n = CreateUserCoursesId(user, db)
     data = n.data()
 
-    abc_bar = db.query(AbcBar).filter(AbcBar.courses == data['courses']).all()
+    abc_bar = db.query(AbcBar) \
+                .filter(AbcBar.courses == data['courses']) \
+                .all()
     
     return { "abc_bar" : abc_bar }
 
@@ -70,3 +75,37 @@ async def get_abc_list(abc_id: int, user: user_dependency, db: db_dependency):
                  .all()
 
     return { "abc_list" : abc_list }
+
+@router.get("/abc_un/{abc_un}", tags=["bar"])
+async def get_abc_un(abc_un: int, user: user_dependency, db: db_dependency):
+    print("eeeeeeeeeeeeeeeee")
+    n = CreateUserCoursesId(user, db)
+    data = n.data()
+
+    abc_un = db.query(AbcUn) \
+                 .filter(AbcUn.courses == data['courses']) \
+                 .filter(AbcUn.abc_un_id == abc_un) \
+                 .all()
+    
+    return { "abc_un" : abc_un}
+
+@router.post("/abc_dos", tags=["bar"])
+async def get_abc_dos(
+    req: AbcDosRequest, 
+    user: user_dependency, 
+    db: db_dependency
+):
+    print("ssssssssssssssssss")
+    print(req)
+    n = CreateUserCoursesId(user, db)
+    data = n.data()
+
+    abc_dos = db.query(AbcDos) \
+                 .filter(AbcDos.courses == data['courses']) \
+                 .filter(AbcDos.abc_dos_id == req.abc_dos_id) \
+                 .filter(AbcDos.number == req.number) \
+                 .filter(AbcDos.number_bar == req.number_bar) \
+                 .first()
+
+    
+    return {"abc_dos" : abc_dos}

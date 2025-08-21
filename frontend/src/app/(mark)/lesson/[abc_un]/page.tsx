@@ -1,15 +1,17 @@
 import { JSX } from "react";
+import { AbcList } from './abc-list'
+
 type PageProps = {
     params: {
-        abc_id: number;
+        abc_un: number;
   };
 }
 
 export default async function LessonPage({ params }: PageProps): Promise<JSX.Element> {
-    const { abc_id } = await params;
+    const { abc_un } = await params;
     
     return (
-        <>fff{abc_id}</>
+        <AbcList abc_un={abc_un} />
     )
 
 }

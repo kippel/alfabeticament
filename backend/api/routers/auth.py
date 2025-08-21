@@ -20,6 +20,8 @@ router = APIRouter( prefix="/auth", tags=["auth"])
 SECRET_KEY = os.getenv("AUTH_SECRET_KEY")
 ALGORITHM = os.getenv("AUTH_ALGORITHM")
 
+ACCESS_TOKEN_EXPIRE_MINUTES= 60
+
 def authenticate_user(username: str, password: str, db):
     user = db.query(User) \
              .filter(User.username == username) \
